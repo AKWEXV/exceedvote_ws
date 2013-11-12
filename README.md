@@ -9,9 +9,8 @@ ExceedVote v.2 adding new type of voting, and RESTful services.
 
 * Requirement
 * Domain Class Diagram, and System Sequence Diagram
-* API Document
-* Development Plan
-* UI Mockup
+* [API Document](https://github.com/AKWEXV/exceedvote_ws/wiki/API-Document)
+* [Development Plan](https://github.com/AKWEXV/exceedvote_ws/wiki/Development-Plan)
 
 Repository Contents
 -------------
