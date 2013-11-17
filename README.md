@@ -1,14 +1,14 @@
 exceedvote_ws
 =============
 
-ExceedVote v.2 is web application using Play! framework 2.2.1 for 219451 Web Services Technology course based on [KKPS's ExceedVote](https://github.com/KKPS/exceedvote) that used in 2012 ExceedVote Camp
+ExceedVote v.2 is web application using Play! framework 2.2.1 for 219451 Web Services Technology course based on [KKPS's ExceedVote](https://github.com/KKPS/exceedvote) that used in 2012 Exceed Camp
 
 ExceedVote v.2 adding new type of voting, and RESTful services.
 
-**Week 1**
+**Quick Links**
 
 * Requirement
-* Domain Class Diagram, and System Sequence Diagram
+* [Domain Class Diagram, and System Sequence Diagram](https://github.com/AKWEXV/exceedvote_ws/wiki/Domain-Class-Diagram,-and-System-Sequence-Diagram)
 * [API Document](https://github.com/AKWEXV/exceedvote_ws/wiki/API-Document)
 * [Development Plan](https://github.com/AKWEXV/exceedvote_ws/wiki/Development-Plan)
 
