@@ -18,14 +18,14 @@ Repository Contents
 | -------------- | ----------- |
 | demo-auth      | Contain the demo authentication application. |
 | demo-test      | Contain the demo testing application. |
-| use-cases      | Contain the use-cases docuements. |
+| use-cases      | Contain the use-cases documents. |
 | designs        | Contain the software design specification. |
 | exceedvote     | Contain the actual ExceedVote application. |
-| test-cases     | Contain the test cases docuements. |
+| test-cases     | Contain the test cases documents. |
 | use-cases      | Contain the use cases (software requirement specification). |
 
 Member
 -------------
-1. Apiwat Srisirisitthikul (5410546385)
-2. Kanokphol Techarattanaprasert (5410545915)
-3. Witsarut Suwanich (5410545079)
+1. Apiwat Srisirisitthikul (5410546385) - Github: [KimApiwat](https://github.com/KimApiwat)
+2. Kanokphol Techarattanaprasert (5410545915) - Github: [sonnyhonny](https://github.com/sonnyhonny)
+3. Witsarut Suwanich (5410545079) - Github: [l2ollingneko](https://github.com/l2ollingneko)
