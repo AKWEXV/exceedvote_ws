@@ -18,7 +18,6 @@ Repository Contents
 | -------------- | ----------- |
 | demo-auth      | Contain the demo authentication application. |
 | demo-test      | Contain the demo testing application. |
-| use-cases      | Contain the use-cases documents. |
 | designs        | Contain the software design specification. |
 | exceedvote     | Contain the actual ExceedVote application. |
 | test-cases     | Contain the test cases documents. |
