@@ -40,6 +40,7 @@ Low Level Design
 * Successful message panel
     * Display after vote success, show vote information.
 
+
 | Component Name | ID | Name |
 | -------------- | -- | ---- |
 | TO-BE-ADDED | TO-BE-ADDED | TO-BE-ADDED |
