@@ -39,9 +39,7 @@ Basic Flow
 
 Alternate Flows
 ---------------
-3a. User decided to cancel vote, User select 'Cancel' button to cancel the process.
-
-1. System redirect user back to vote page.
+3a. User decided to cancel vote, User select to leave vote page.
 
 
 Frequency of Occurrence
