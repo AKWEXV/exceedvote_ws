@@ -19,7 +19,7 @@ public class Criterion extends Model {
 	@Constraints.Required
 	public String name;
 	
-	public Finder<Long, Criterion> find = new Finder<Long, Criterion>(Long.class, Criterion.class);
+	public static Finder<Long, Criterion> find = new Finder<Long, Criterion>(Long.class, Criterion.class);
 	
 	public Criterion() {
 		

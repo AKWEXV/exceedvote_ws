@@ -11,3 +11,5 @@ GET     /assets/*file               controllers.Assets.at(path="/public", file)
 # REST service
 GET     /api/v1/contestant          controllers.Contestants.indexXml()
 GET     /api/v1/contestant/:id      controllers.Contestants.contestantXml(id: Long)
+GET     /api/v1/criterion           controllers.Criteria.indexXml()
+GET     /api/v1/criterion/:id       controllers.Criteria.criterionXml(id: Long)

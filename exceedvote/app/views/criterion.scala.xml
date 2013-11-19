@@ -1,0 +1,5 @@
+@(criterion: models.Criterion)<?xml version="1.0" encoding="UTF-8"?>
+<criterion>
+	<id>@criterion.id</id>
+	<name>@criterion.name</name>
+</criterion>

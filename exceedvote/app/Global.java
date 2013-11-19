@@ -10,10 +10,12 @@ public class Global extends GlobalSettings {
 
 	static class InitialData {
 		public static void insert(Application app) {
-//			if (Ebean.find(User.class).findRowCount() == 0) {
-//				Map<String, List<Object>> all = (Map<String, List<Object>>)Yaml.load("initial-data.yml");
-//				Ebean.save(all.get("role"));
-//			}
+			if (Ebean.find(Contestant.class).findRowCount() == 0) {
+				Map<String, List<Object>> all = (Map<String, List<Object>>)Yaml.load("initial-data.yml");
+				Ebean.save(all.get("contestant"));
+				Ebean.save(all.get("criterion"));
+				Ebean.save(all.get("role"));
+			}
 		}
 	}
 

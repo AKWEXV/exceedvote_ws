@@ -1,0 +1,38 @@
+contestant:
+
+    - !!models.Contestant
+        id:              1
+        name:            Angried Pork
+        description:     Some description.
+
+    - !!models.Contestant
+        id:              2
+        name:            WorldNote
+        description:     Some description.
+
+criterion:
+
+    - !!models.Criterion
+        id:              1
+        name:            Popular Vote
+
+    - !!models.Criterion
+        id:              2
+        name:            Creativity Award
+
+role:
+
+    - !!models.Role
+        id:              1
+        name:            Student
+        criterionVote:   1
+
+    - !!models.Role
+        id:              2
+        name:            Teacher
+        criterionVote:   5
+
+    - !!models.Role
+        id:              3
+        name:            Guest
+        criterionVote:   3

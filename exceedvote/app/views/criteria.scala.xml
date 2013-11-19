@@ -1,0 +1,7 @@
+@(criteria: List[models.Criterion])<?xml version="1.0" encoding="UTF-8"?>
+<criteria>@for(criterion <- criteria){
+	<criterion>
+		<id>@criterion.id</id>
+		<name>@criterion.name</name>
+	</criterion>}
+</criteria>
