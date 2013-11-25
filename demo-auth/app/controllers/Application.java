@@ -4,9 +4,7 @@ import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import play.*;
 import play.mvc.*;
-import views.html.*;
 
 public class Application extends Controller {
 
@@ -46,6 +44,10 @@ public class Application extends Controller {
     			return ok("Cannot login\nValid Response : " + validResponse + "\n Your Response : " + response + "\nResponse Header : " + authHeader);
     	}
     	
+    }
+    
+    public static Result logout() {
+    	return unauthorized();
     }
 
 }
