@@ -16,10 +16,10 @@ public class User extends Model {
 	@Id
 	public Long id;
 	
-	// @OneToOne ???
+	@OneToOne
 	public Role role;
 	
-	// @OneToOne ???
+	@OneToOne
 	public Contestant contestant;
 	
 	@Constraints.Required

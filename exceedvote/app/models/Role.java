@@ -14,13 +14,13 @@ import play.data.validation.*;
 public class Role extends Model {
 	
 	@Id
-	public Integer id;
+	public Long id;
 	
 	public String name;
 	
-	public Integer criterionVote;
+	public int criterionVote;
 	
-	public Finder<Integer, Role> find = new Finder<Integer, Role>(Integer.class, Role.class);
+	public Finder<Long, Role> find = new Finder<Long, Role>(Long.class, Role.class);
 
 	public Role() {
 		
@@ -39,11 +39,11 @@ public class Role extends Model {
 		this.name = name;
 	}
 
-	public Integer getCriterionVote() {
+	public int getCriterionVote() {
 		return criterionVote;
 	}
 
-	public void setCriterionVote(Integer criterionVote) {
+	public void setCriterionVote(int criterionVote) {
 		this.criterionVote = criterionVote;
 	}
 	

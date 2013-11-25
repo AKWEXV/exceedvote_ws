@@ -1,4 +1,4 @@
-contestant:
+contestants:
 
     - !!models.Contestant
         id:              1
@@ -10,7 +10,7 @@ contestant:
         name:            WorldNote
         description:     Some description.
 
-criterion:
+criteria:
 
     - !!models.Criterion
         id:              1
@@ -20,7 +20,7 @@ criterion:
         id:              2
         name:            Creativity Award
 
-role:
+roles:
 
     - !!models.Role
         id:              1
@@ -36,3 +36,30 @@ role:
         id:              3
         name:            Guest
         criterionVote:   3
+
+users:
+
+    - !!models.User
+        id:              1
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 1
+        username:        admin
+        password:        admin
+        email:           admin@exceedvote.com
+
+    - !!models.User
+        id:              2
+        role:
+            !!models.Role
+              id: 2
+        contestant:
+            !!models.Contestant
+              id: 2
+        username:        mushi
+        password:        webservices
+        email:           mushi@exceedvote.com
