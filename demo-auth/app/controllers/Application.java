@@ -23,7 +23,7 @@ public class Application extends Controller {
 			return unauthorized();
 		}
     	else {	
-			response.setHeader("Access-Control-Allow-Origin: *");
+			response().setHeader("Access-Control-Allow-Origin", "*");
     		String a1 = "username:" + REALM + ":password";
 
             int nonceindex = authHeader.indexOf("nonce");
