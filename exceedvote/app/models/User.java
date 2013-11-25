@@ -30,7 +30,7 @@ public class User extends Model {
 	
 	public String email;
 	
-	public Finder<Long, User> find = new Finder<Long, User>(Long.class, User.class);
+	public static Finder<Long, User> find = new Finder<Long, User>(Long.class, User.class);
 	
 	public User() {
 		
@@ -39,6 +39,15 @@ public class User extends Model {
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
+	}
+	
+	/* */
+	public static String getPasswordFromUsername(String username) {
+		User user = find.where().eq("username", username).findUnique();
+		if (user != null)
+			return user.getPassword();
+		else
+			return null;
 	}
 
 	public Role getRole() {
