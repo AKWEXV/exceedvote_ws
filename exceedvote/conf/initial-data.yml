@@ -63,3 +63,35 @@ users:
         username:        mushi
         password:        webservices
         email:           mushi@exceedvote.com
+
+ballots:
+
+    - !!models.Ballot
+        id:              1
+        contestant:
+            !!models.Contestant
+              id: 2
+        score:           10
+
+    - !!models.Ballot
+        id:              2
+        contestant:
+            !!models.Contestant
+              id: 1
+        score:           8
+
+votes:
+
+    - !!models.Vote
+        id:              1
+        user:
+            !!models.User
+              id: 1
+        criterion:
+            !!models.Criterion
+              id: 1
+        ballots:
+            - !!models.Ballot
+              id: 1
+            - !!models.Ballot
+              id: 2

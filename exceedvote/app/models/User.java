@@ -30,7 +30,7 @@ public class User extends Model {
 	
 	public String email;
 	
-	public Finder<Long, User> find = new Finder<Long, User>(Long.class, User.class);
+	public static Finder<Long, User> find = new Finder<Long, User>(Long.class, User.class);
 	
 	public User() {
 		
@@ -39,6 +39,14 @@ public class User extends Model {
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Role getRole() {

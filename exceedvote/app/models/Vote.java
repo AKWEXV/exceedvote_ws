@@ -1,11 +1,9 @@
 package models;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
-
-// import org.codehaus.jackson.annotate.JsonIgnore;
 
 import play.db.ebean.*;
 import play.data.validation.*;
@@ -27,10 +25,28 @@ public class Vote extends Model {
 	@OneToOne
 	public Criterion criterion;
 	
-	@ElementCollection(fetch = FetchType.EAGER)
-    @MapKeyColumn(name = "vote", nullable = false)
-	public Map<Contestant, Integer> vote = new HashMap<Contestant, Integer>();
+	@ManyToMany
+	public List<Ballot> ballots = new ArrayList<Ballot>();
+	
+	public static Finder<Long, Vote> find = new Finder<Long, Vote>(Long.class, Vote.class);
 
+	public Vote() {
+		
+	}
+	
+	public Vote(User user, Criterion criterion) {
+		this.user = user;
+		this.criterion = criterion;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public User getUser() {
 		return user;
 	}
@@ -46,15 +62,23 @@ public class Vote extends Model {
 	public void setCriterion(Criterion criterion) {
 		this.criterion = criterion;
 	}
-
-	public Map<Contestant, Integer> getVote() {
-		return vote;
+	
+	public List<Ballot> getBallots() {
+		return ballots;
 	}
 
-	public void setVote(Map<Contestant, Integer> vote) {
-		this.vote = vote;
+	public void setBallots(List<Ballot> ballots) {
+		this.ballots = ballots;
 	}
 	
+	public int getBallotsNumber() {
+		return ballots.size();
+	}
+	
+	public void addBallot(Ballot ballot) {
+		ballots.add(ballot);
+	}
+
 	public String toString() {
 		return "";
 	}

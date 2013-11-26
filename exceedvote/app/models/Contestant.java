@@ -31,6 +31,14 @@ public class Contestant extends Model {
 		this.name = name;
 		this.description = description;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
