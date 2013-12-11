@@ -10,6 +10,7 @@ import views.xml.*;
 
 public class Contestants extends Controller {
 	
+	@With(Authentication.class)
 	public static Result indexXml() {
 		return ok(views.xml.contestants.render(Contestant.find.all()));
 	}

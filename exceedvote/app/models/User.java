@@ -40,6 +40,14 @@ public class User extends Model {
 		this.username = username;
 		this.password = password;
 	}
+
+	public static String getPasswordFromUsername(String username) {
+		User user = find.where().eq("username", username).findUnique();
+		if (user != null)
+			return user.getPassword();
+		else
+			return null;
+	}
 	
 	public Long getId() {
 		return id;
