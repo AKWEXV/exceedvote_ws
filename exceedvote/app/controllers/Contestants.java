@@ -10,9 +10,13 @@ import views.xml.*;
 
 public class Contestants extends Controller {
 	
-	@With(Authentication.class)
 	public static Result indexXml() {
-		return ok(views.xml.contestants.render(Contestant.find.all()));
+		if (Contestant.find.all().size() == 0) {
+			return noContent();
+		}
+		else {
+			return ok(views.xml.contestants.render(Contestant.find.all()));
+		}
 	}
 	
 	public static Result contestantXml(Long id) {

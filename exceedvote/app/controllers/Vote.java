@@ -18,24 +18,21 @@ import views.xml.*;
 
 public class Vote extends Controller {
 	
-	public static Result vote() {
+	public static Result vote(Long criterionId) {
 		Document dom = request().body().asXml();
 		if (dom == null) {
 			return badRequest("Expecting XML data");
 		}
 		else {
-			Node voteNode = XPath.selectNode("vote", dom);
-			Node criterionNode = XPath.selectNode("criterion", voteNode);
-			int criterionId = Integer.parseInt(XPath.selectText("id", criterionNode));
+			// GET user from http context
+			// TODO (for now use temp user)
+			User user = User.find.where().eq("id", 1).findUnique();
+			// GET criterion from request url (/id)
 			Criterion criterion = Criterion.find.where().eq("id", criterionId).findUnique();
-			Node userNode = XPath.selectNode("user", voteNode);
-			int userId = Integer.parseInt(XPath.selectText("id", userNode));
-			User user = User.find.where().eq("id", userId).findUnique();
 			models.Vote vote = new models.Vote(user, criterion);
-			Node contestantsNode = XPath.selectNode("contestants", voteNode);
-			NodeList contestantNodeList = XPath.selectNodes("contestant", contestantsNode);
-			for (int i = 0; i < contestantNodeList.getLength(); i++) {
-				Node contestantNode = contestantNodeList.item(i);
+			NodeList contestantsNodeList = XPath.selectNodes("vote/contestants/contestant", dom);
+			for (int i = 0; i < contestantsNodeList.getLength(); i++) {
+				Node contestantNode = contestantsNodeList.item(i);
 				int contestantId = Integer.parseInt(XPath.selectText("id",contestantNode));
 				int score = Integer.parseInt(XPath.selectText("score",contestantNode));
 				Contestant contestant = Contestant.find.where().eq("id", contestantId).findUnique();
@@ -45,6 +42,21 @@ public class Vote extends Controller {
 			}
 			vote.save();
 			return created(views.xml.vote.render(vote));
+		}
+	}
+	
+	public static Result myVoteXml() {
+		// GET user from http context
+		// TODO (for now use temp user)
+		User user = User.find.where().eq("id", 1).findUnique();
+		System.out.println(user.username);
+		System.out.println(models.Vote.find.where().eq("user", user).findList().size());
+		if (models.Vote.find.where().eq("user", user).findList().size() == 0) {
+			return noContent();
+		}
+		else {
+			List<models.Vote> voteList = models.Vote.find.where().eq("user", user).findList();
+			return ok(views.xml.myvote.render(voteList));
 		}
 	}
 

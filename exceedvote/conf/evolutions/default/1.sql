@@ -90,3 +90,4 @@ drop table vote;
 drop table vote_ballot;
 
 SET FOREIGN_KEY_CHECKS=1;
+
