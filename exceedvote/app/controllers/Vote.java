@@ -18,6 +18,7 @@ import views.xml.*;
 
 public class Vote extends Controller {
 	
+	@With(Authentication.class)
 	public static Result vote(Long criterionId) {
 		Document dom = request().body().asXml();
 		if (dom == null) {
@@ -45,6 +46,7 @@ public class Vote extends Controller {
 		}
 	}
 	
+	@With(Authentication.class)
 	public static Result myVoteXml() {
 		// GET user from http context
 		// TODO (for now use temp user)
