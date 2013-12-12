@@ -1,0 +1,6 @@
+@(contestants: List[models.Contestant])
+
+<h1>All Contestants</h1>
+<ul>@for(contestant <- contestants){
+	<li>@contestant.getId() @contestant.getName() - @contestant.getDescription()</li>}
+</ul>

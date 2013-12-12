@@ -3,12 +3,15 @@ package controllers;
 import play.*;
 import play.data.*;
 import play.mvc.*;
-
 import models.*;
 import views.html.*;
 import views.xml.*;
 
 public class Criteria extends Controller {
+	
+	public static Result index() {
+		return ok(views.html.criteria.render(Criterion.find.all()));
+	}
 	
 	public static Result indexXml() {
 		if (Criterion.find.all().size() == 0) {

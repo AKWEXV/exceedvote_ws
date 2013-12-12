@@ -10,6 +10,10 @@ import views.xml.*;
 
 public class Contestants extends Controller {
 	
+	public static Result index() {
+		return ok(views.html.contestants.render(Contestant.find.all()));
+	}
+	
 	public static Result indexXml() {
 		if (Contestant.find.all().size() == 0) {
 			return noContent();
