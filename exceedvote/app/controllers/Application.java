@@ -18,7 +18,7 @@ public class Application extends Controller {
     
     @With(Authentication.class)
     public static Result authorized() {
-    	return ok("Logged in");
+    	return ok(request().getHeader("Authorization"));
     }
 
 }
