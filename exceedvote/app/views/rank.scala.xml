@@ -1,0 +1,16 @@
+@(criteria: List[models.Criterion], contestants: List[models.Contestant])<?xml version="1.0" encoding="UTF-8"?>
+<rank>
+	<criteria>@for(criterion <- criteria){
+		<criterion>
+			<id>@criterion.getId()</id>
+			<name>@criterion.getName()</name>
+			<contestants>@for(contestant <- contestants){
+				<contestant>
+					<id>@contestant.getId()</id>
+					<name>@contestant.getName()</name>
+					<score>@contestant.findScoreCriterion(criterion)</score>
+				</contestant>}
+			</contestants>
+		</criterion>}
+	</criteria>
+</rank>

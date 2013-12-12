@@ -1,0 +1,6 @@
+@(criteria: List[models.Criterion])
+
+<h1>All Criteria</h1>
+<ul>@for(criterion <- criteria){
+	<li>@criterion.getId() @criterion.getName() - @criterion.getType()</li>}
+</ul>

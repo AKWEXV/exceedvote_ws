@@ -1,0 +1,365 @@
+contestants:
+
+    # - !!models.Contestant
+    #     id:              1
+    #     name:            Angried Pork
+    #     description:     Some description.
+
+    # - !!models.Contestant
+    #     id:              2
+    #     name:            WorldNote
+    #     description:     Some description.
+
+    - !!models.Contestant
+        id:              1
+        name:            Organizer
+        description:     By Simon Adrian Jens
+
+    - !!models.Contestant
+        id:              2
+        name:            Product Information Server
+        description:     By Akarawit Jaktip
+
+    - !!models.Contestant
+        id:              3
+        name:            eXceedVote RESTful Server
+        description:     By Chanon Kanin Pawis
+
+    - !!models.Contestant
+        id:              4
+        name:            eXceedVote RESTful Server (using Play! Framework)
+        description:     By Apiwat Kanokphol Witsarut
+
+    - !!models.Contestant
+        id:              5
+        name:            eXceedVote Client (iOS)
+        description:     By Artima
+
+    - !!models.Contestant
+        id:              6
+        name:            eXceedVote Client (Android)
+        description:     By Kunat
+
+    - !!models.Contestant
+        id:              7
+        name:            eXceedVote Client (Java Desktop App)
+        description:     By Thiwat
+
+    - !!models.Contestant
+        id:              8
+        name:            eXceedVote Client (PhoneGap)
+        description:     By Marisa
+
+criteria:
+
+    - !!models.Criterion
+        id:              1
+        name:            Popular Vote
+        type:            1
+
+    - !!models.Criterion
+        id:              2
+        name:            Creativity Award
+        type:            1
+
+    - !!models.Criterion
+        id:              3
+        name:            Best Design
+        type:            1
+
+    - !!models.Criterion
+        id:              4
+        name:            Usability
+        type:            2
+
+    - !!models.Criterion
+        id:              5
+        name:            Performance
+        type:            2
+
+    - !!models.Criterion
+        id:              6
+        name:            Graphic
+        type:            2
+
+roles:
+
+    - !!models.Role
+        id:              1
+        name:            Student
+        criterionVote:   1
+
+    - !!models.Role
+        id:              2
+        name:            Teacher
+        criterionVote:   5
+
+    - !!models.Role
+        id:              3
+        name:            Guest
+        criterionVote:   3
+
+users:
+
+    - !!models.User
+        id:              1
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 1
+        username:        admin
+        password:        admin
+        email:           admin@exceedvote.com
+
+    - !!models.User
+        id:              2
+        role:
+            !!models.Role
+              id: 2
+        contestant:
+            !!models.Contestant
+              id: 2
+        username:        mushi
+        password:        webservices
+        email:           mushi@exceedvote.com
+
+    - !!models.User
+        id:              3
+        role:
+            !!models.Role
+              id: 3
+
+        contestant:
+            !!models.Contestant
+              id: 1
+        username:        adrian
+        password:        adrian
+        email:           adrian@exceedvote.com
+
+    - !!models.User
+        id:              4
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 2
+        username:        akarawit
+        password:        akarawit
+        email:           akarawit@exceedvote.com
+
+    - !!models.User
+        id:              5
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 4
+        username:        apiwat
+        password:        apiwat
+        email:           apiwat@exceedvote.com
+
+    - !!models.User
+        id:              6
+        role:
+            !!models.Role
+              id: 1
+        contestant:
+            !!models.Contestant
+              id: 5
+        username:        artima
+        password:        artima
+        email:           artima@exceedvote.com
+
+    - !!models.User
+        id:              7
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 3
+        username:        chanon
+        password:        chanon
+        email:           chanon@exceedvote.com
+
+    - !!models.User
+        id:              8
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 2
+        username:        jaktip
+        password:        jaktip
+        email:           jaktip@exceedvote.com
+
+    - !!models.User
+        id:              9
+        role:
+            !!models.Role
+              id: 3
+
+        contestant:
+            !!models.Contestant
+              id: 1
+        username:        jens
+        password:        jens
+        email:           jens@exceedvote.com
+
+    - !!models.User
+        id:              10
+        role:
+            !!models.Role
+              id: 1
+        contestant:
+            !!models.Contestant
+              id: 3
+        username:        kanin
+        password:        kanin
+        email:           kanin@exceedvote.com
+
+    - !!models.User
+        id:              11
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 4
+        username:        kanokphol
+        password:        kanokphol
+        email:           kanokphol@exceedvote.com
+
+    - !!models.User
+        id:              12
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 6
+        username:        kunat
+        password:        kunat
+        email:           kunat@exceedvote.com
+
+    - !!models.User
+        id:              13
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 8
+        username:        marisa
+        password:        marisa
+        email:           marisa@exceedvote.com
+
+    - !!models.User
+        id:              14
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 3
+        username:        pawis
+        password:        pawis
+        email:           pawis@exceedvote.com
+
+    - !!models.User
+        id:              15
+        role:
+            !!models.Role
+              id: 3
+
+        contestant:
+            !!models.Contestant
+              id: 1
+        username:        simon
+        password:        simon
+        email:           simon@exceedvote.com
+
+    - !!models.User
+        id:              16
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 7
+        username:        thiwat
+        password:        thiwat
+        email:           thiwat@exceedvote.com
+
+    - !!models.User
+        id:              17
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 4
+        username:        witsarut
+        password:        witsarut
+        email:           witsarut@exceedvote.com
+
+    - !!models.User
+        id:              18
+        role:
+            !!models.Role
+              id: 2
+
+        contestant:
+            !!models.Contestant
+              id: 1
+        username:        jim
+        password:        jim
+        email:           jim@exceedvote.com
+
+ballots:
+
+    - !!models.Ballot
+        id:              1
+        contestant:
+            !!models.Contestant
+              id: 2
+        score:           10
+
+    - !!models.Ballot
+        id:              2
+        contestant:
+            !!models.Contestant
+              id: 1
+        score:           8
+
+votes:
+
+    - !!models.Vote
+        id:              1
+        user:
+            !!models.User
+              id: 1
+        criterion:
+            !!models.Criterion
+              id: 1
+        ballots:
+            - !!models.Ballot
+              id: 1
+            - !!models.Ballot
+              id: 2

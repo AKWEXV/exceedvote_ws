@@ -1,0 +1,7 @@
+@(users: List[models.User])
+
+<h1>All Users</h1>
+<a href="user/add"><button>Add User</button></a>
+<ul>@for(user <- users){
+	<li>@user.getId() @user.getUsername() - @user.getEmail()</li>}
+</ul>

@@ -1,0 +1,6 @@
+@(votes: List[models.Vote])
+
+<h1>All Votes</h1>
+<ul>@for(vote <- votes){@for(ballot <- vote.getBallots()){
+	<li>@vote.getId() @vote.getCriterion().getName() - @ballot.getContestant().getName() - @ballot.getScore()</li>}}
+</ul>

@@ -1,0 +1,3 @@
+@(url: String)<link rel="criterion" href="@(url)exceedvote/api/v1/criterion"/>
+<link rel="contestant" href="@(url)exceedvote/api/v1/contestant"/>
+<link rel="myvote" href="@(url)exceedvote/api/v1/myvote"/>

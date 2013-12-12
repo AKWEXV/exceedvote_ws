@@ -1,0 +1,20 @@
+@(vote: models.Vote)<?xml version="1.0" encoding="UTF-8"?>
+<vote>
+	<id>@vote.id</id>
+	<criterion>
+		<id>@vote.criterion.getId()</id>
+		<question>@vote.criterion.getName()</question>
+		<type>@vote.criterion.getType()</type>
+	</criterion>
+	<user>
+		<id>@vote.user.getId()</id>
+		<username>@vote.user.getUsername()</username>
+	</user>
+	<contestants>@for(ballot <- vote.ballots){
+		<contestant>
+			<id>@ballot.contestant.getId()</id>
+			<name>@ballot.contestant.getName()</name>
+			<score>@ballot.score</score>
+		</contestant>}
+	</contestants>
+</vote>

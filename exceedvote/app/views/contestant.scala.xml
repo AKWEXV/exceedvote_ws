@@ -1,0 +1,6 @@
+@(contestant: models.Contestant)<?xml version="1.0" encoding="UTF-8"?>
+<contestant>
+	<id>@contestant.id</id>
+	<name>@contestant.name</name>
+	<description>@contestant.description</description>
+</contestant>
