@@ -321,7 +321,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 99
+              id: 1
         username:        jim
         password:        jim
         email:           jim@exceedvote.com
