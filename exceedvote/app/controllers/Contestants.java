@@ -10,6 +10,7 @@ import views.xml.*;
 
 public class Contestants extends Controller {
 	
+	@With(Authentication.class)
 	public static Result indexXml() {
 		if (Contestant.find.all().size() == 0) {
 			return noContent();

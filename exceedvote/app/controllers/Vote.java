@@ -25,9 +25,9 @@ public class Vote extends Controller {
 			return badRequest("Expecting XML data");
 		}
 		else {
-			// GET user from http context
-			// TODO (for now use temp user)
-			User user = User.find.where().eq("id", 1).findUnique();
+			String authorizationHeader = request().getHeader("Authorization");
+			String username = getAuthorizationElement("username", authorizationHeader);
+			User user = User.find.where().eq("username", username).findUnique();
 			// GET criterion from request url (/id)
 			Criterion criterion = Criterion.find.where().eq("id", criterionId).findUnique();
 			models.Vote vote = new models.Vote(user, criterion);
@@ -48,9 +48,9 @@ public class Vote extends Controller {
 	
 	@With(Authentication.class)
 	public static Result myVoteXml() {
-		// GET user from http context
-		// TODO (for now use temp user)
-		User user = User.find.where().eq("id", 1).findUnique();
+		String authorizationHeader = request().getHeader("Authorization");
+		String username = getAuthorizationElement("username", authorizationHeader);
+		User user = User.find.where().eq("username", username).findUnique();
 		System.out.println(user.username);
 		System.out.println(models.Vote.find.where().eq("user", user).findList().size());
 		if (models.Vote.find.where().eq("user", user).findList().size() == 0) {
@@ -60,6 +60,20 @@ public class Vote extends Controller {
 			List<models.Vote> voteList = models.Vote.find.where().eq("user", user).findList();
 			return ok(views.xml.myvote.render(voteList));
 		}
+	}
+	
+	private static String getAuthorizationElement(String element, String requestHeader) {
+		int index = requestHeader.indexOf(element);
+		StringBuilder output = new StringBuilder();
+		while (requestHeader.charAt(index) != '"') {
+			index++;
+		}
+		index++;
+		while (requestHeader.charAt(index) != '"') {
+			output.append(requestHeader.charAt(index));
+			index++;
+		}
+		return output.toString();
 	}
 
 }
