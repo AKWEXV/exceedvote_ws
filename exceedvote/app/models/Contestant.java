@@ -1,5 +1,7 @@
 package models;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
@@ -31,6 +33,14 @@ public class Contestant extends Model {
 		this.name = name;
 		this.description = description;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getName() {
 		return name;
@@ -50,6 +60,21 @@ public class Contestant extends Model {
 	
 	public String toString() {
 		return "";
+	}
+	
+	// Add
+	public int findScoreCriterion(Criterion criterion) {
+		List<Vote> votesList = Vote.find.where().eq("criterion", criterion).findList();
+		int scoreCriterion = 0;
+		for (Vote vote : votesList) {
+			List<Ballot> ballotsList = vote.getBallots();
+			for (Ballot ballot : ballotsList) {
+				if (ballot.getContestant().equals(this)) {
+					scoreCriterion += ballot.getScore();
+				}
+			}
+		}
+		return scoreCriterion;
 	}
 	
 }

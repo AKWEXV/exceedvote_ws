@@ -2,4 +2,5 @@
 <criterion>
 	<id>@criterion.id</id>
 	<name>@criterion.name</name>
+	<type>@criterion.getType()</type>
 </criterion>

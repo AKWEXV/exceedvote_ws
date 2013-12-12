@@ -1,5 +1,7 @@
 package models;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
@@ -19,6 +21,8 @@ public class Criterion extends Model {
 	@Constraints.Required
 	public String name;
 	
+	public int type;
+	
 	public static Finder<Long, Criterion> find = new Finder<Long, Criterion>(Long.class, Criterion.class);
 	
 	public Criterion() {
@@ -27,6 +31,14 @@ public class Criterion extends Model {
 	
 	public Criterion(String name) {
 		this.name = name;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -37,6 +49,14 @@ public class Criterion extends Model {
 		this.name = name;
 	}
 	
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	public String toString() {
 		return "";
 	}

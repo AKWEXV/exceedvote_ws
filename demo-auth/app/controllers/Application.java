@@ -4,9 +4,7 @@ import java.util.UUID;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import play.*;
 import play.mvc.*;
-import views.html.*;
 
 public class Application extends Controller {
 
@@ -23,19 +21,22 @@ public class Application extends Controller {
 			return unauthorized();
 		}
     	else {	
+			response().setHeader("Access-Control-Allow-Origin", "*");
     		String a1 = "username:" + REALM + ":password";
 
-    		String[] auth = authHeader.split(" ");
-    		String nonce = auth[3].substring(7, 39);
-    		String uri = auth[4].substring(5, auth[4].length()-2);
+            int nonceindex = authHeader.indexOf("nonce");
+            String nonce = authHeader.substring(nonceindex+7, nonceindex+39);
+            int uriIndex = authHeader.indexOf("uri");
+            String uri = authHeader.substring(uriIndex+5, uriIndex+6);
 
-    		String a2 = "GET:" + uri;
+            String a2 = "GET:" + uri;
 
-    		a1 = DigestUtils.md5Hex(a1);
-    		a2 = DigestUtils.md5Hex(a2);
-    		
-    		String validResponse = DigestUtils.md5Hex(a1 + ":" + nonce + ":" + a2);
-    		String response = auth[5].substring(10, 42);
+            a1 = DigestUtils.md5Hex(a1);
+            a2 = DigestUtils.md5Hex(a2);
+            
+            String validResponse = DigestUtils.md5Hex(a1 + ":" + nonce + ":" + a2);
+            int responseIndex = authHeader.indexOf("response");
+            String response = authHeader.substring(responseIndex+10, responseIndex+42);
     		
     		if (validResponse.equals(response))
     			return ok("Demo authentication application by using Digest Authentication\nValid Response : " + validResponse + "\n Your Response : " + response + "\nResponse Header : " + authHeader);
@@ -43,6 +44,10 @@ public class Application extends Controller {
     			return ok("Cannot login\nValid Response : " + validResponse + "\n Your Response : " + response + "\nResponse Header : " + authHeader);
     	}
     	
+    }
+    
+    public static Result logout() {
+    	return unauthorized();
     }
 
 }

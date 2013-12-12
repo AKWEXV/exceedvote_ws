@@ -1,0 +1,16 @@
+@(votes: List[models.Vote])<?xml version="1.0" encoding="UTF-8"?>
+<myvote>
+	<votes>@for(vote <- votes){@for(ballot <- vote.getBallots()){
+		<vote>
+			<criterion>
+				<id>@vote.getCriterion().getId()</id>
+				<name>@vote.getCriterion().getName()</name>
+			</criterion>
+			<contestant>
+				<id>@ballot.getContestant().getId()</id>
+				<name>@ballot.getContestant().getName()</name>
+				<score>@ballot.getScore()</score>
+			</contestant>
+		</vote>}}
+	</votes>
+</myvote>
