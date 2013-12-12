@@ -64,6 +64,212 @@ users:
         password:        webservices
         email:           mushi@exceedvote.com
 
+    - !!models.User
+        id:              3
+        role:
+            !!models.Role
+              id: 3
+
+        contestant:
+            !!models.Contestant
+              id: 3
+        username:        adrian
+        password:        adrian
+        email:           adrian@exceedvote.com
+
+    - !!models.User
+        id:              4
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 4
+        username:        akarawit
+        password:        akarawit
+        email:           akarawit@exceedvote.com
+
+    - !!models.User
+        id:              5
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 5
+        username:        apiwat
+        password:        apiwat
+        email:           apiwat@exceedvote.com
+
+    - !!models.User
+        id:              6
+        role:
+            !!models.Role
+              id: 1
+        contestant:
+            !!models.Contestant
+              id: 6
+        username:        artima
+        password:        artima
+        email:           artima@exceedvote.com
+
+    - !!models.User
+        id:              7
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 7
+        username:        chanon
+        password:        chanon
+        email:           chanon@exceedvote.com
+
+    - !!models.User
+        id:              8
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 8
+        username:        jaktip
+        password:        jaktip
+        email:           jaktip@exceedvote.com
+
+    - !!models.User
+        id:              9
+        role:
+            !!models.Role
+              id: 3
+
+        contestant:
+            !!models.Contestant
+              id: 9
+        username:        jens
+        password:        jens
+        email:           jens@exceedvote.com
+
+    - !!models.User
+        id:              10
+        role:
+            !!models.Role
+              id: 1
+        contestant:
+            !!models.Contestant
+              id: 10
+        username:        kanin
+        password:        kanin
+        email:           kanin@exceedvote.com
+
+    - !!models.User
+        id:              11
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 11
+        username:        kanokphol
+        password:        kanokphol
+        email:           kanokphol@exceedvote.com
+
+    - !!models.User
+        id:              12
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 12
+        username:        kunat
+        password:        kunat
+        email:           kunat@exceedvote.com
+
+    - !!models.User
+        id:              13
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 13
+        username:        marisa
+        password:        marisa
+        email:           marisa@exceedvote.com
+
+    - !!models.User
+        id:              14
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 14
+        username:        pawis
+        password:        pawis
+        email:           pawis@exceedvote.com
+
+    - !!models.User
+        id:              15
+        role:
+            !!models.Role
+              id: 3
+
+        contestant:
+            !!models.Contestant
+              id: 15
+        username:        simon
+        password:        simon
+        email:           simon@exceedvote.com
+
+    - !!models.User
+        id:              16
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 16
+        username:        thiwat
+        password:        thiwat
+        email:           thiwat@exceedvote.com
+
+    - !!models.User
+        id:              17
+        role:
+            !!models.Role
+              id: 1
+
+        contestant:
+            !!models.Contestant
+              id: 17
+        username:        witsarut
+        password:        witsarut
+        email:           witsarut@exceedvote.com
+
+    - !!models.User
+        id:              18
+        role:
+            !!models.Role
+              id: 2
+
+        contestant:
+            !!models.Contestant
+              id: 18
+        username:        jim
+        password:        jim
+        email:           jim@exceedvote.com
+
 ballots:
 
     - !!models.Ballot
