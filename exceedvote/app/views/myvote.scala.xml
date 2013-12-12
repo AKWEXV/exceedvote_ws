@@ -4,9 +4,11 @@
 		<vote>
 			<criterion>
 				<id>@vote.getCriterion().getId()</id>
+				<name>@vote.getCriterion().getName()</name>
 			</criterion>
 			<contestant>
 				<id>@ballot.getContestant().getId()</id>
+				<name>@ballot.getContestant().getName()</name>
 				<score>@ballot.getScore()</score>
 			</contestant>
 		</vote>}}
