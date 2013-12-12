@@ -18,6 +18,10 @@ import views.xml.*;
 
 public class Vote extends Controller {
 	
+	public static Result voteHtml() {
+		return ok(views.html.votes.render(models.Vote.find.all()));
+	}
+	
 	@With(Authentication.class)
 	public static Result vote(Long criterionId) {
 		Document dom = request().body().asXml();

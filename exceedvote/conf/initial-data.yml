@@ -55,26 +55,32 @@ criteria:
     - !!models.Criterion
         id:              1
         name:            Popular Vote
+        type:            1
 
     - !!models.Criterion
         id:              2
         name:            Creativity Award
+        type:            1
 
     - !!models.Criterion
         id:              3
         name:            Best Design
+        type:            1
 
     - !!models.Criterion
         id:              4
         name:            Usability
+        type:            2
 
     - !!models.Criterion
         id:              5
         name:            Performance
+        type:            2
 
     - !!models.Criterion
         id:              6
         name:            Graphic
+        type:            2
 
 roles:
 
