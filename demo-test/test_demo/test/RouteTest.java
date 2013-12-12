@@ -16,7 +16,7 @@ public class RouteTest {
 
     @Test
     public void badRouteTest() {
-        Result result = routeAndCall(fakeRequest(GET, "/bad"));
-        assertThat(result).isNull();
+        Result result = routeAndCall(fakeRequest(GET, "/api/v1/contestant"));
+        assertThat(result).isNotNull();
     }
 }
