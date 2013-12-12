@@ -1,14 +1,54 @@
 contestants:
 
+    # - !!models.Contestant
+    #     id:              1
+    #     name:            Angried Pork
+    #     description:     Some description.
+
+    # - !!models.Contestant
+    #     id:              2
+    #     name:            WorldNote
+    #     description:     Some description.
+
     - !!models.Contestant
         id:              1
-        name:            Angried Pork
-        description:     Some description.
+        name:            Organizer
+        description:     By Simon Adrian Jens
 
     - !!models.Contestant
         id:              2
-        name:            WorldNote
-        description:     Some description.
+        name:            Product Information Server
+        description:     By Akarawit Jaktip
+
+    - !!models.Contestant
+        id:              3
+        name:            eXceedVote RESTful Server
+        description:     By Chanon Kanin Pawis
+
+    - !!models.Contestant
+        id:              4
+        name:            eXceedVote RESTful Server (using Play! Framework)
+        description:     By Apiwat Kanokphol Witsarut
+
+    - !!models.Contestant
+        id:              5
+        name:            eXceedVote Client (iOS)
+        description:     By Artima
+
+    - !!models.Contestant
+        id:              6
+        name:            eXceedVote Client (Android)
+        description:     By Kunat
+
+    - !!models.Contestant
+        id:              7
+        name:            eXceedVote Client (Java Desktop App)
+        description:     By Thiwat
+
+    - !!models.Contestant
+        id:              8
+        name:            eXceedVote Client (PhoneGap)
+        description:     By Marisa
 
 criteria:
 
@@ -19,6 +59,22 @@ criteria:
     - !!models.Criterion
         id:              2
         name:            Creativity Award
+
+    - !!models.Criterion
+        id:              3
+        name:            Best Design
+
+    - !!models.Criterion
+        id:              4
+        name:            Usability
+
+    - !!models.Criterion
+        id:              5
+        name:            Performance
+
+    - !!models.Criterion
+        id:              6
+        name:            Graphic
 
 roles:
 
@@ -72,7 +128,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 3
+              id: 1
         username:        adrian
         password:        adrian
         email:           adrian@exceedvote.com
@@ -85,7 +141,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 4
+              id: 2
         username:        akarawit
         password:        akarawit
         email:           akarawit@exceedvote.com
@@ -98,7 +154,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 5
+              id: 4
         username:        apiwat
         password:        apiwat
         email:           apiwat@exceedvote.com
@@ -110,7 +166,7 @@ users:
               id: 1
         contestant:
             !!models.Contestant
-              id: 6
+              id: 5
         username:        artima
         password:        artima
         email:           artima@exceedvote.com
@@ -123,7 +179,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 7
+              id: 3
         username:        chanon
         password:        chanon
         email:           chanon@exceedvote.com
@@ -136,7 +192,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 8
+              id: 2
         username:        jaktip
         password:        jaktip
         email:           jaktip@exceedvote.com
@@ -149,7 +205,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 9
+              id: 1
         username:        jens
         password:        jens
         email:           jens@exceedvote.com
@@ -161,7 +217,7 @@ users:
               id: 1
         contestant:
             !!models.Contestant
-              id: 10
+              id: 3
         username:        kanin
         password:        kanin
         email:           kanin@exceedvote.com
@@ -174,7 +230,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 11
+              id: 4
         username:        kanokphol
         password:        kanokphol
         email:           kanokphol@exceedvote.com
@@ -187,7 +243,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 12
+              id: 6
         username:        kunat
         password:        kunat
         email:           kunat@exceedvote.com
@@ -200,7 +256,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 13
+              id: 8
         username:        marisa
         password:        marisa
         email:           marisa@exceedvote.com
@@ -213,7 +269,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 14
+              id: 3
         username:        pawis
         password:        pawis
         email:           pawis@exceedvote.com
@@ -226,7 +282,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 15
+              id: 1
         username:        simon
         password:        simon
         email:           simon@exceedvote.com
@@ -239,7 +295,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 16
+              id: 7
         username:        thiwat
         password:        thiwat
         email:           thiwat@exceedvote.com
@@ -252,7 +308,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 17
+              id: 4
         username:        witsarut
         password:        witsarut
         email:           witsarut@exceedvote.com
@@ -265,7 +321,7 @@ users:
 
         contestant:
             !!models.Contestant
-              id: 18
+              id: 99
         username:        jim
         password:        jim
         email:           jim@exceedvote.com
