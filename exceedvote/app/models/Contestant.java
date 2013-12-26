@@ -76,5 +76,24 @@ public class Contestant extends Model {
 		}
 		return scoreCriterion;
 	}
-	
+
+	public static void addContestant(String name, String description) {
+		Contestant contestant = find.where()
+									.eq("name", name)
+									.findUnique();
+		if (contestant == null) {
+			Contestant newContestant = new Contestant(name, description);
+			newContestant.save();
+		}
+	}
+
+	public static void updateContestant(Long id, String name, String description) {
+		Contestant contestant = find.ref(id);
+		if (contestant != null) {
+			contestant.setName(name);
+			contestant.setDescription(description);
+			contestant.update();
+		}
+	}
+
 }

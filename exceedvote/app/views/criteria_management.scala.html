@@ -1,0 +1,77 @@
+@(criteria: List[models.Criterion], user: User)
+
+@header(user, title = "Criteria Management") {
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Criteria Management</h1>	
+			<p>Manage criteria</p>
+		</div>	
+	</div>	
+
+	<div class="container">
+		<div class="col-xs-6 col-sm-3 sidebar-offcanvas">
+			<ul class="list-group">
+				<li class="list-group-item"><a>Add new criterion</a></li>
+				@for(criterion <- criteria) {
+					<li class="list-group-item"><a href="#@criterion.getId()">@criterion.getName()</a></li>
+				}
+			</ul>	
+		</div>
+		<div class="col-xs-12 col-sm-9">
+			<div class="page-header">
+				<h1>Add new criterion</h1>	
+			</div>
+			<!-- <form class="form-horizontal" role="form"> -->
+			@helper.form(routes.Criteria.addCriterion, 'class -> "form-horizontal") {
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">Name : </label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="name" placeholder="">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="" class="col-sm-3 control-label">Type : </label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" name="type" placeholder="">
+					</div>
+				</div>
+				<div style="text-align: right; margin-right: 72px;">
+					<button class="btn btn-primary">Save</button>
+					<button class="btn btn-danger">Cancel</button>
+				</div>
+			}
+			<!-- </form> -->
+			@for(criterion <- criteria) {
+				<div class="page-header">
+					<h1 id="@criterion.getId()">@criterion.getName()</h1>	
+				</div>
+				<!-- <form class="form-horizontal" role="form"> -->
+				@helper.form(routes.Criteria.updateCriterion(criterion.getId()), 'class -> "form-horizontal") {
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">Name : </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="name" placeholder="" value="@criterion.getName()">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-3 control-label">Type : </label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="type" placeholder="" value="@criterion.getType()">
+							</div>
+						</div>			
+						<div style="text-align: right; margin-right: 72px;">
+							<button type="submit" class="btn btn-primary" style="float: left;">Save changes</button>
+				}
+				@helper.form(routes.Criteria.deleteCriterion(criterion.getId())) {
+							<button type="submit" class="btn btn-danger" style="float: left; margin-left: 5px;">Delete</button>
+				}
+						</div>
+				<!-- </form> -->
+				<br><br>
+			}
+		</div>
+		
+	</div>
+
+}

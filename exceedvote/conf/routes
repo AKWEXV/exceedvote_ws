@@ -3,35 +3,46 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET		/vote 						controllers.Vote.index()
-GET     /contestant                 controllers.Contestants.index()
+GET     /                           			controllers.Application.index()
+GET		/vote 									controllers.Vote.index()
+GET     /contestant                 			controllers.Contestants.index()
 
 # User
-GET		/profile					controllers.Users.profile()
+GET		/profile								controllers.Users.profile()
+POST	/update									controllers.Users.updateProfile()
+POST	/password								controllers.Users.changePassword()
 
 # Authentication
-GET		/login						controllers.Application.login()
-POST    /login                      controllers.Application.authenticate()
-GET     /logout                     controllers.Application.logout()
+GET		/login									controllers.Application.login()
+POST    /login                      			controllers.Application.authenticate()
+GET     /logout                     			controllers.Application.logout()
 
 # Service Authentication
-GET     /authorized                 controllers.Application.authorized()
+GET     /authorized                 			controllers.Application.authorized()
 
 # Admin
-GET     /criterion                  controllers.Criteria.index()
-GET     /user                       controllers.Users.index()
-GET     /vote                       controllers.Vote.voteHtml()
+GET		/contestants/management					controllers.Contestants.contestantsManagement()
+POST	/contestants/management/add				controllers.Contestants.addContestant()
+POST	/contestants/management/update/:id		controllers.Contestants.updateContestant(id: Long)
+POST	/contestants/management/delete/:id		controllers.Contestants.deleteContestant(id: Long)
+GET		/criteria/management 					controllers.Criteria.criteriaManagement()
+POST	/criteria/management/add				controllers.Criteria.addCriterion()
+POST	/criteria/management/update/:id			controllers.Criteria.updateCriterion(id: Long)
+POST	/criteria/management/delete/:id			controllers.Criteria.deleteCriterion(id: Long)
+GET		/users/management 						controllers.Users.usersManagement()
+GET     /criterion                  			controllers.Criteria.index()
+GET     /user                       			controllers.Users.index()
+GET     /vote                       			controllers.Vote.voteHtml()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file               			controllers.Assets.at(path="/public", file)
 
 # REST service
-GET     /exceedvote/api/v1                     controllers.Application.indexXml()
-GET     /exceedvote/api/v1/contestant          controllers.Contestants.indexXml()
-GET     /exceedvote/api/v1/contestant/:id      controllers.Contestants.contestantXml(id: Long)
-GET     /exceedvote/api/v1/criterion           controllers.Criteria.indexXml()
-GET     /exceedvote/api/v1/criterion/:id       controllers.Criteria.criterionXml(id: Long)
-POST    /exceedvote/api/v1/criterion/:id/vote  controllers.Vote.vote(id: Long)
-GET     /exceedvote/api/v1/myvote              controllers.Vote.myVoteXml()
-GET     /exceedvote/api/v1/rank                controllers.Rank.rank()
+GET     /exceedvote/api/v1                     	controllers.Application.indexXml()
+GET     /exceedvote/api/v1/contestant          	controllers.Contestants.indexXml()
+GET     /exceedvote/api/v1/contestant/:id      	controllers.Contestants.contestantXml(id: Long)
+GET     /exceedvote/api/v1/criterion           	controllers.Criteria.indexXml()
+GET     /exceedvote/api/v1/criterion/:id       	controllers.Criteria.criterionXml(id: Long)
+POST    /exceedvote/api/v1/criterion/:id/vote  	controllers.Vote.vote(id: Long)
+GET     /exceedvote/api/v1/myvote              	controllers.Vote.myVoteXml()
+GET     /exceedvote/api/v1/rank                	controllers.Rank.rank()

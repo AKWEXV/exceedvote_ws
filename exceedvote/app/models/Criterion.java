@@ -32,6 +32,12 @@ public class Criterion extends Model {
 	public Criterion(String name) {
 		this.name = name;
 	}
+
+
+	public Criterion(String name, int type) {
+		this.name = name;
+		this.type = type;
+	}
 	
 	public Long getId() {
 		return id;
@@ -61,4 +67,23 @@ public class Criterion extends Model {
 		return "";
 	}
 	
+	public static void addCriterion(String name, String type) {
+		Criterion criterion = find.where()
+									.eq("name", name)
+									.findUnique();
+		if (criterion == null) {
+			Criterion newCriterion = new Criterion(name, Integer.parseInt(type));
+			newCriterion.save();
+		}
+	}
+
+	public static void updateCriterion(Long id, String name, String type) {
+		Criterion criterion = find.ref(id);
+		if (criterion != null) {
+			criterion.setName(name);
+			criterion.setType(Integer.parseInt(type));
+			criterion.update();
+		}
+	}
+
 }

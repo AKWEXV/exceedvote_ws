@@ -67,6 +67,24 @@ public class User extends Model {
                    .eq("username", username)
         		   .findUnique();
 	}
+
+	public static void updateUser(String username, String email) {
+		User user = find.where()
+					    .eq("username", username)
+					    .findUnique();
+		user.setEmail(email);
+		user.update();
+	}
+
+	public static void changePassword(String username, String current_password, String password, String retype_password) {
+		User user = find.where()
+					    .eq("username", username)
+					    .findUnique();
+		if (user.getPassword().equals(current_password) && password.equals(retype_password)) {
+			user.setPassword(password);
+			user.update();
+		}
+	}
 	
 	public Long getId() {
 		return id;
