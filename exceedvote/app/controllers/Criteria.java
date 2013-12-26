@@ -9,6 +9,7 @@ import views.xml.*;
 
 public class Criteria extends Controller {
 	
+	@Security.Authenticated(Secured.class)
 	public static Result index() {
 		return ok(views.html.criteria.render(Criterion.find.all()));
 	}

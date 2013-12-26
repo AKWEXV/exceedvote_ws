@@ -1,6 +1,32 @@
-@(contestants: List[models.Contestant])
+@(contestants: List[models.Contestant], user: User)
 
-<h1>All Contestants</h1>
-<ul>@for(contestant <- contestants){
-	<li>@contestant.getId() @contestant.getName() - @contestant.getDescription()</li>}
-</ul>
+@header(user, title = "Contestants") {
+	
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Contestants</h1>	
+			<p>All contestants</p>
+		</div>	
+	</div>
+
+	<div class="container">
+		<div class="col-xs-6 col-sm-3 sidebar-offcanvas">
+			<ul class="list-group">
+				@for(contestant <- contestants) {
+					<li class="list-group-item"><a href="#@contestant.getId()">@contestant.getName()</a></li>
+				}
+			</ul>	
+		</div>
+		<div class="col-xs-12 col-sm-9">
+			@for(contestant <- contestants) {
+				<div class="page-header">
+					<h1 id="@contestant.getId()">@contestant.getName()</h1>	
+				</div>
+				<p class="lead">@contestant.getDescription()</p>
+				<p>Description</p>
+			}
+		</div>
+		
+	</div>
+
+}

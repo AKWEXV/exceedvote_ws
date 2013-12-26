@@ -1,0 +1,64 @@
+@(user: User, title: String)(content: Html)
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>@title</title>
+		<link href="@routes.Assets.at("stylesheets/bootstrap.css")" rel="stylesheet">
+		<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+		<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
+		<script src="@routes.Assets.at("javascripts/countdown.js")"></script>
+	</head>
+
+	<body style="padding-top: 50px; position: relative;">
+
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">eXceed Vote</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="/">Home</a></li>
+						<li><a href="/contestant">Contestants</a></li>
+						@if(user.getRole().getName() != "Admin") {
+							<li><a href="/vote">Vote</a></li>
+							<li><a href="#contact">About</a></li>
+						}
+						@if(user.getRole().getName() == "Admin") {
+							<li><a href="/vote">Criteria Management</a></li>
+							<li><a href="/vote">Contestants Management</a></li>
+							<li><a href="/vote">Users Management</a></li>
+						}
+					</ul>	
+					<ul class="nav navbar-nav navbar-right">
+						<!-- <div class="form-group">
+							<input type="text" placeholder="Email" class="form-control">
+						</div>
+						<div class="form-group">
+							<input type="password" placeholder="Password" class="form-control">
+						</div> -->
+						<li>
+							<a href="/profile"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;@user.getUsername()</a>
+						</li>
+						<li style="background-color: #e74c3c;">
+							<a href="/logout" style="color: #ffffff;">Sign out</a>
+						</li>
+					</ul>
+				</div><!--/.navbar-collapse -->
+			</div>
+		</div>
+
+		<section class="content">@content</section>
+	</body>
+
+</html>

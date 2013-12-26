@@ -4,10 +4,21 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+GET		/vote 						controllers.Vote.index()
+GET     /contestant                 controllers.Contestants.index()
+
+# User
+GET		/profile					controllers.Users.profile()
+
+# Authentication
+GET		/login						controllers.Application.login()
+POST    /login                      controllers.Application.authenticate()
+GET     /logout                     controllers.Application.logout()
+
+# Service Authentication
 GET     /authorized                 controllers.Application.authorized()
 
 # Admin
-GET     /contestant                 controllers.Contestants.index()
 GET     /criterion                  controllers.Criteria.index()
 GET     /user                       controllers.Users.index()
 GET     /vote                       controllers.Vote.voteHtml()

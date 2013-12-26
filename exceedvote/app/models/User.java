@@ -48,6 +48,25 @@ public class User extends Model {
 		else
 			return null;
 	}
+
+	/**
+     * Authenticate a User.
+     */
+    public static User authenticate(String username, String password) {
+        return find.where()
+            .eq("username", username)
+            .eq("password", password)
+            .findUnique();
+    }
+
+    /**
+	 * find user by username.
+	*/
+	public static User findByUsername(String username) {
+		return find.where()
+                   .eq("username", username)
+        		   .findUnique();
+	}
 	
 	public Long getId() {
 		return id;

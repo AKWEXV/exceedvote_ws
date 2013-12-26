@@ -10,8 +10,9 @@ import views.xml.*;
 
 public class Contestants extends Controller {
 	
+	@Security.Authenticated(Secured.class)
 	public static Result index() {
-		return ok(views.html.contestants.render(Contestant.find.all()));
+		return ok(views.html.contestants.render(Contestant.find.all(), User.findByUsername(request().username())));
 	}
 	
 	public static Result indexXml() {

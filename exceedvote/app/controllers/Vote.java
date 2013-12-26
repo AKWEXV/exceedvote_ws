@@ -22,6 +22,11 @@ public class Vote extends Controller {
 		return ok(views.html.votes.render(models.Vote.find.all()));
 	}
 	
+	@Security.Authenticated(Secured.class)
+	public static Result index() {
+		return ok(views.html.vote.render(User.findByUsername(request().username())));
+	}
+
 	@With(Authentication.class)
 	public static Result vote(Long criterionId) {
 		Document dom = request().body().asXml();
