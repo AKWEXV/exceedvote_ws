@@ -99,13 +99,18 @@ roles:
         name:            Guest
         criterionVote:   3
 
+    - !!models.Role
+        id:              4
+        name:            Admin
+        criterionVote:   0
+
 users:
 
     - !!models.User
         id:              1
         role:
             !!models.Role
-              id: 1
+              id: 4
 
         contestant:
             !!models.Contestant
