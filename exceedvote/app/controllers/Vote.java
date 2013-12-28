@@ -39,18 +39,49 @@ public class Vote extends Controller {
 			User user = User.find.where().eq("username", username).findUnique();
 			// GET criterion from request url (/id)
 			Criterion criterion = Criterion.find.where().eq("id", criterionId).findUnique();
-			models.Vote vote = new models.Vote(user, criterion);
-			NodeList contestantsNodeList = XPath.selectNodes("vote/contestants/contestant", dom);
-			for (int i = 0; i < contestantsNodeList.getLength(); i++) {
-				Node contestantNode = contestantsNodeList.item(i);
-				int contestantId = Integer.parseInt(XPath.selectText("id",contestantNode));
-				int score = Integer.parseInt(XPath.selectText("score",contestantNode));
-				Contestant contestant = Contestant.find.where().eq("id", contestantId).findUnique();
-				Ballot ballot = new Ballot(contestant, score);
-				ballot.save();
-				vote.addBallot(ballot);
+			models.Vote lvuc = models.Vote.find.where().eq("user", user).eq("criterion", criterion).findUnique();
+			// List<models.Vote> lvuc = models.Vote.find.where().eq("user", user).eq("criterion", criterion).findList();
+			// if (lvuc.size() != 0) {
+			if (lvuc != null) {
+				// for (models.Vote v : lvuc) {
+					// User junkUser = User.find.ref(new Long(19));
+					// v.setUser(junkUser);
+					// Logger.info(v.getUser().getId().toString());
+					// v.update();
+
+					List<Ballot> ballots = lvuc.getBallots();
+
+					NodeList contestantsNodeList = XPath.selectNodes("vote/contestants/contestant", dom);
+					for (int i = 0; i < contestantsNodeList.getLength(); i++) {
+						Node contestantNode = contestantsNodeList.item(i);
+						int contestantId = Integer.parseInt(XPath.selectText("id",contestantNode));
+						int score = Integer.parseInt(XPath.selectText("score",contestantNode));
+						Contestant contestant = Contestant.find.where().eq("id", contestantId).findUnique();
+						
+						for (Ballot ballot : ballots) {
+							if (ballot.getContestant().getId() == contestantId) {
+								ballot.setScore(score);
+								ballot.update();
+							}
+						}
+					}
+				// }
 			}
-			vote.save();
+			else {
+				models.Vote vote = new models.Vote(user, criterion);
+				NodeList contestantsNodeList = XPath.selectNodes("vote/contestants/contestant", dom);
+				for (int i = 0; i < contestantsNodeList.getLength(); i++) {
+					Node contestantNode = contestantsNodeList.item(i);
+					int contestantId = Integer.parseInt(XPath.selectText("id",contestantNode));
+					int score = Integer.parseInt(XPath.selectText("score",contestantNode));
+					Contestant contestant = Contestant.find.where().eq("id", contestantId).findUnique();
+					Ballot ballot = new Ballot(contestant, score);
+					ballot.save();
+					vote.addBallot(ballot);
+				}
+				vote.save();
+			}
+			models.Vote vote = models.Vote.find.where().eq("user", user).eq("criterion", criterion).findUnique();
 			return created(views.xml.vote.render(vote));
 		}
 	}
