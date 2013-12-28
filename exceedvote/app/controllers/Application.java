@@ -66,6 +66,11 @@ public class Application extends Controller {
     public static Result index() {
         return ok(views.html.home.render(User.findByUsername(request().username())));
     }
+
+    @Security.Authenticated(Secured.class)
+    public static Result about() {
+        return ok(views.html.about.render(User.findByUsername(request().username())));
+    }
     
     public static Result indexXml() {
     	String baseUrl = routes.Application.index().absoluteURL(request());

@@ -1,16 +1,20 @@
-@(criteria: List[models.Criterion], contestants: List[models.Contestant])<?xml version="1.0" encoding="UTF-8"?>
+@(ranking: List[models.Ranking])<?xml version="1.0" encoding="UTF-8"?>
 <rank>
-	<criteria>@for(criterion <- criteria){
+	<criteria>
+		@for(r <- ranking){
 		<criterion>
-			<id>@criterion.getId()</id>
-			<name>@criterion.getName()</name>
-			<contestants>@for(contestant <- contestants){
+			<id>@r.getCriterion().getId()</id>
+			<name>@r.getCriterion().getName()</name>
+			<contestants>
+				@for(contestant <- r.getContestants()){
 				<contestant>
 					<id>@contestant.getId()</id>
 					<name>@contestant.getName()</name>
-					<score>@contestant.findScoreCriterion(criterion)</score>
-				</contestant>}
+					<score>@contestant.getScore()</score>
+				</contestant>
+				}
 			</contestants>
-		</criterion>}
+		</criterion>
+		}
 	</criteria>
 </rank>

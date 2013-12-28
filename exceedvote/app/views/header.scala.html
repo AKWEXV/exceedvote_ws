@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>@title</title>
 		<link href="@routes.Assets.at("stylesheets/bootstrap.css")" rel="stylesheet">
+		<link href="@routes.Assets.at("stylesheets/main.css")" rel="stylesheet">
 		<script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
 		<script src="@routes.Assets.at("javascripts/bootstrap.js")"></script>
 		<script src="@routes.Assets.at("javascripts/countdown.js")"></script>
@@ -31,8 +32,8 @@
 						<li><a href="/">Home</a></li>
 						<li><a href="/contestant">Contestants</a></li>
 						@if(user.getRole().getName() != "Admin") {
-							<li><a href="/vote">Vote</a></li>
-							<li><a href="#contact">About</a></li>
+							<li><a href="/ranking">Ranking</a></li>
+							<li><a href="/about">About</a></li>
 						}
 						@if(user.getRole().getName() == "Admin") {
 							<li><a href="/criteria/management">Criteria Management</a></li>
@@ -41,12 +42,6 @@
 						}
 					</ul>	
 					<ul class="nav navbar-nav navbar-right">
-						<!-- <div class="form-group">
-							<input type="text" placeholder="Email" class="form-control">
-						</div>
-						<div class="form-group">
-							<input type="password" placeholder="Password" class="form-control">
-						</div> -->
 						<li>
 							<a href="/profile"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;@user.getUsername()</a>
 						</li>
@@ -54,15 +49,16 @@
 							<a href="/logout" style="color: #ffffff;">Sign out</a>
 						</li>
 					</ul>
-				</div><!--/.navbar-collapse -->
+				</div>
 			</div>
 		</div>
 
-		<section class="content">@content</section>
+		<section class="content" style="min-height: 100%;">@content</section>
 
-		<div id="footer" style="height: 50px; margin-top: 50px; background-color: black; color: white;">
+		<div id="footer" style="height: auto; margin-top: 50px; background-color: black; color: white;">
 			<div class="container">
-				<p style="color: #999999; margin-top: 15px;">eXceedVote by Apiwat Srisirisitthikul, Kanokphol Techarattanaprasert, Witsarut Suwanich - Software and Knowledge Engineering, Kasetsart University</p>
+				<p style="color: #999999; padding: 15px 0px 0px 0px; text-align: center;">eXceedVote by Apiwat Srisirisitthikul, Kanokphol Techarattanaprasert, Witsarut Suwanich</p>
+				<p style="color: #999999; padding: 0px 0px 5px 0px; text-align: center;">Software and Knowledge Engineering, Kasetsart University</p>
 			</div>
 		</div>
 		
