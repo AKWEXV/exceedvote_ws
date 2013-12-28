@@ -22,6 +22,7 @@ public class Global extends GlobalSettings {
                     // Insert the ... relation
                     Ebean.saveManyToManyAssociations(vote, "ballots");
                 }
+				Ebean.save(all.get("timers"));
 			}
 		}
 	}
