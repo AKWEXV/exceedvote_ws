@@ -31,6 +31,13 @@ create table role (
   constraint pk_role primary key (id))
 ;
 
+create table timer (
+  id                        bigint auto_increment not null,
+  start                     datetime,
+  finish                    datetime,
+  constraint pk_timer primary key (id))
+;
+
 create table user (
   id                        bigint auto_increment not null,
   role_id                   bigint,
@@ -82,6 +89,8 @@ drop table contestant;
 drop table criterion;
 
 drop table role;
+
+drop table timer;
 
 drop table user;
 

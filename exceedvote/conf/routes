@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           			controllers.Application.index()
+POST	/vote 									controllers.Vote.webVote()
 GET		/vote 									controllers.Vote.index()
 GET     /contestant                 			controllers.Contestants.index()
 
@@ -36,6 +37,8 @@ POST    /users/management/delete/:id            controllers.Users.deleteUser(id:
 GET     /criterion                  			controllers.Criteria.index()
 GET     /user                       			controllers.Users.index()
 GET     /vote                       			controllers.Vote.voteHtml()
+GET     /timer/management                       controllers.Timers.timerManagement()
+POST    /timer/management/update                controllers.Timers.updateTimer()                  
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               			controllers.Assets.at(path="/public", file)

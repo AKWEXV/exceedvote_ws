@@ -368,3 +368,10 @@ votes:
               id: 1
             - !!models.Ballot
               id: 2
+
+timers:
+
+    - !!models.Timer
+        id:              1
+        start:           '2013-12-01 01:00:00 +7:00'
+        finish:          '2014-12-31 23:00:00 +7:00'
