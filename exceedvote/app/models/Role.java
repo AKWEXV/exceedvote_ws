@@ -20,7 +20,7 @@ public class Role extends Model {
 	
 	public int criterionVote;
 	
-	public Finder<Long, Role> find = new Finder<Long, Role>(Long.class, Role.class);
+	public static Finder<Long, Role> find = new Finder<Long, Role>(Long.class, Role.class);
 
 	public Role() {
 		

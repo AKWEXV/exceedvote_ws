@@ -47,5 +47,63 @@ public class Users extends Controller {
             );
 		}	
 	}
+	
+	public static Result addUser() {
+		User user = User.findByUsername(request().username());
+		if (user.getRole().getName().equals("Admin")) {
+			User.addUser(
+				form().bindFromRequest().get("username"),
+				form().bindFromRequest().get("password"),
+				form().bindFromRequest().get("email"),
+				Long.parseLong(form().bindFromRequest().get("role_id")),
+				Long.parseLong(form().bindFromRequest().get("contestant_id"))
+			);
+			return redirect(
+	            routes.Users.usersManagement()
+	        );
+		}
+		else {
+			return redirect(
+	            routes.Application.index()
+	        );			
+		}
+	}
+	
+	public static Result updateUser(Long id) {
+		User user = User.findByUsername(request().username());
+		if (user.getRole().getName().equals("Admin")) {
+			User.adminUpdateUser(
+				id,
+				form().bindFromRequest().get("username"),
+				form().bindFromRequest().get("password"),
+				form().bindFromRequest().get("email"),
+				Long.parseLong(form().bindFromRequest().get("role_id")),
+				Long.parseLong(form().bindFromRequest().get("contestant_id"))
+			);
+			return redirect(
+		        routes.Users.usersManagement()
+		    );
+		}
+		else {
+			return redirect(
+	            routes.Application.index()
+	        );			
+		}
+	}
+	
+	public static Result deleteUser(Long id) {
+		User user = User.findByUsername(request().username());
+		if (user.getRole().getName().equals("Admin")) {
+			User.find.ref(id).delete();
+			return redirect(
+			        routes.Users.usersManagement()
+			    );
+		}
+		else {
+			return redirect(
+	            routes.Application.index()
+	        );			
+		}
+	}
 
 }
