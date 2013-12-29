@@ -22,7 +22,7 @@
 		<div class="container">
 			<h1>eXceed Vote</h1>
 			@if(timer.checkAllowVote()) {	
-				<p><strong>Start:</strong> @timer.getStart().toString() to <strong>Finish:</strong> @timer.getFinish().toString()</p>
+				<p><strong>Start :</strong> @timer.getStart().toString() to <strong>Finish :</strong> @timer.getFinish().toString()</p>
 			}
 			@if(!timer.checkAllowVote()) {	
 				<p>This contest has <strong>finished</strong> (Finish: @timer.getFinish())</p>
@@ -32,14 +32,14 @@
 
 	@if(timer.checkAllowVote()) {
 		<div class="container">
-			<div class="col-xs-6 col-sm-3 sidebar-offcanvas">
+			<div class="col-sm-3 sidebar-offcanvas">
 				<ul class="list-group">
 					@for(criterion <- criteria) {
 						<li class="list-group-item"><a href="#@criterion.getId()">@criterion.getName()</a></li>
 					}
 				</ul>	
 			</div>
-			<div class="col-xs-12 col-sm-9">
+			<div class="col-sm-9">
 				@helper.form(routes.Vote.webVote(), 'class -> "form-horizontal") {
 					@for(criterion <- criteria) {
 						<div class="page-header">
