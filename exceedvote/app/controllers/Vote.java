@@ -60,8 +60,8 @@ public class Vote extends Controller {
 		String authorizationHeader = request().getHeader("Authorization");
 		String username = getAuthorizationElement("username", authorizationHeader);
 		User user = User.find.where().eq("username", username).findUnique();
-		System.out.println(user.username);
-		System.out.println(models.Vote.find.where().eq("user", user).findList().size());
+//		System.out.println(user.username);
+//		System.out.println(models.Vote.find.where().eq("user", user).findList().size());
 		if (models.Vote.find.where().eq("user", user).findList().size() == 0) {
 			return noContent();
 		}
