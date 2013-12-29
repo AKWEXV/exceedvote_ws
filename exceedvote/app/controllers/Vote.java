@@ -45,15 +45,24 @@ public class Vote extends Controller {
 			// List<models.Vote> lvuc = models.Vote.find.where().eq("user", user).eq("criterion", criterion).findList();
 			// if (lvuc.size() != 0) {
 			if (lvuc != null) {
-				// for (models.Vote v : lvuc) {
-					// User junkUser = User.find.ref(new Long(19));
-					// v.setUser(junkUser);
-					// Logger.info(v.getUser().getId().toString());
-					// v.update();
 
 					List<Ballot> ballots = lvuc.getBallots();
 
 					NodeList contestantsNodeList = XPath.selectNodes("vote/contestants/contestant", dom);
+
+					if (criterion.getType() == 1) {
+						boolean haveScore = false;
+						for (int i = 0; i < contestantsNodeList.getLength(); i++) {
+							Node contestantNode = contestantsNodeList.item(i);
+							if (Integer.parseInt(XPath.selectText("score",contestantNode)) > 0) {
+								if (!haveScore)
+									haveScore = true;
+								else
+									return badRequest("Your vote is for CRITERION, ONLY 1 contesant can get vote");
+							}
+						}
+					}
+
 					for (int i = 0; i < contestantsNodeList.getLength(); i++) {
 						Node contestantNode = contestantsNodeList.item(i);
 						int contestantId = Integer.parseInt(XPath.selectText("id",contestantNode));
@@ -62,7 +71,12 @@ public class Vote extends Controller {
 						
 						for (Ballot ballot : ballots) {
 							if (ballot.getContestant().getId() == contestantId) {
-								ballot.setScore(score);
+								if (criterion.getType() == 1) {
+									ballot.setScore(user.getRole().getCriterionVote());
+								}
+								else {
+									ballot.setScore(score);
+								}
 								ballot.update();
 							}
 						}
@@ -102,7 +116,7 @@ public class Vote extends Controller {
 				models.Vote newVote = new models.Vote(user, c);
 				if (c.getType() == 1) {
 					Long conId = Long.parseLong(form().bindFromRequest().get(c.getName()));
-					Ballot ballot = new Ballot(Contestant.find.ref(conId), 1);
+					Ballot ballot = new Ballot(Contestant.find.ref(conId), user.getRole().getCriterionVote());
 					ballot.save();
 					newVote.addBallot(ballot);
 				}
