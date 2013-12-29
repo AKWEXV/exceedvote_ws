@@ -1,5 +1,7 @@
 package controllers;
 
+import static play.data.Form.form;
+
 import java.util.List;
 
 import models.*;
@@ -83,6 +85,40 @@ public class Vote extends Controller {
 			}
 			models.Vote vote = models.Vote.find.where().eq("user", user).eq("criterion", criterion).findUnique();
 			return created(views.xml.vote.render(vote));
+		}
+	}
+	
+	@Security.Authenticated(Secured.class)
+	public static Result webVote() {
+		if (!Timer.find.ref((long) 1).checkAllowVote()) {
+			return redirect(
+					routes.Application.index()
+				);
+		}
+		else {
+			User user = User.findByUsername(request().username());
+			// List<models.Vote> lv = models.Vote.find.where().eq("user", user).findList();
+			for (Criterion c : Criterion.find.all()) {
+				models.Vote newVote = new models.Vote(user, c);
+				if (c.getType() == 1) {
+					Long conId = Long.parseLong(form().bindFromRequest().get(c.getName()));
+					Ballot ballot = new Ballot(Contestant.find.ref(conId), 1);
+					ballot.save();
+					newVote.addBallot(ballot);
+				}
+				else {
+					for (Contestant con : Contestant.find.all()) {
+						int score = Integer.parseInt(form().bindFromRequest().get(c.getName() + "." + con.getName()));
+						Ballot ballot = new Ballot(con, score);
+						ballot.save();
+						newVote.addBallot(ballot);
+					}
+				}
+				newVote.save();
+			}
+			return redirect(
+	                routes.Application.index()
+	            );
 		}
 	}
 	

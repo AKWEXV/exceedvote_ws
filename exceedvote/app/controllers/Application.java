@@ -4,8 +4,10 @@ import play.*;
 import play.mvc.*;
 import play.data.*;
 import static play.data.Form.*;
-
 import views.html.*;
+import models.Contestant;
+import models.Criterion;
+import models.Timer;
 import models.User;
 
 public class Application extends Controller {
@@ -64,7 +66,12 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(views.html.home.render(User.findByUsername(request().username())));
+        return ok(views.html.home.render(Rank.getRanking(), User.findByUsername(request().username()), Timer.find.ref((long) 1), Criterion.find.all(), Contestant.find.all()));
+    }
+
+    @Security.Authenticated(Secured.class)
+    public static Result about() {
+        return ok(views.html.about.render(User.findByUsername(request().username())));
     }
     
     public static Result indexXml() {

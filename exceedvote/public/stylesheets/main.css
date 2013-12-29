@@ -1,0 +1,16 @@
+
+	html, body {
+		height: 100%;
+	}
+
+	.jumbotron {
+		background-color: #2ecc71;
+	}
+
+	.jumbotron .container > h1 {
+		color: #ffffff;
+	}
+
+	.jumbotron .container > p {
+		color: #ffffff;
+	}

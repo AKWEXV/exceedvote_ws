@@ -1,29 +1,114 @@
-@(user: User)
+@(ranking: List[models.Ranking], user: User, timer: models.Timer, criteria: List[models.Criterion], contestants: List[models.Contestant])
+
+@import helper._
 
 @header(user, title = "Home") {
 
 	<!-- Main jumbotron for a primary marketing message or call to action -->
-<!-- 	<div class="jumbotron">
+	<!-- <div class="jumbotron">
 		<div class="container">
 			<h1>Countdown Timer here !</h1>
 			<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-			<p><a class="btn btn-primary btn-lg" role="button">Learn more »</a></p>
+			<p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
 		</div>
 	</div> -->
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		$(document).ready(function() {
 			$("#timer").countdown( new Date(2000, 0, 1) ).toString();
 		});
-	</script>
-
-	<div class="container" style="padding-top: 50px; min-height: 600px;">
-		<div style="text-align: center; padding-top: 70px;">
-			<h1>eXceed Vote</h1>	
-		</div>
-		<div style="text-align: center;">
-			<div id="timer"></div>
-			<h1>Timer Here</h1>
-		</div>
+	</script> -->
+	
+	<div class="jumbotron">
+		<div class="container">
+			<h1>eXceed Vote</h1>
+			@if(timer.checkAllowVote()) {	
+				<p><strong>Start:</strong> @timer.getStart().toString() to <strong>Finish:</strong> @timer.getFinish().toString()</p>
+			}
+			@if(!timer.checkAllowVote()) {	
+				<p>This contest has <strong>finished</strong> (Finish: @timer.getFinish())</p>
+			}
+		</div>	
 	</div>
 
+	@if(timer.checkAllowVote()) {
+		<div class="container">
+			<div class="col-xs-6 col-sm-3 sidebar-offcanvas">
+				<ul class="list-group">
+					@for(criterion <- criteria) {
+						<li class="list-group-item"><a href="#@criterion.getId()">@criterion.getName()</a></li>
+					}
+				</ul>	
+			</div>
+			<div class="col-xs-12 col-sm-9">
+				@helper.form(routes.Vote.webVote(), 'class -> "form-horizontal") {
+					@for(criterion <- criteria) {
+						<div class="page-header">
+							<h1 id="@criterion.getId()">@criterion.getName()</h1>	
+						</div>
+						@if(criterion.getType() == 1) {
+							<select class="form-control" name="@(criterion.name)">
+								@for(contestant <- contestants) {
+									<option value="@contestant.id">@contestant.name</option>
+								}
+							</select>
+						} else {
+							@for(contestant <- contestants) {
+							<div class="form-group">
+								<label for="" class="col-sm-4 control-label">@contestant.name : </label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" name="@(criterion.name).@(contestant.name)" placeholder="Type score 1 to 10" value="">
+								</div>
+							</div>
+							}
+						}		
+						<!-- <div class="col-sm-12"> -->
+						<br><br>
+						<!-- <p class="lead"></p> -->
+						<!-- <p>Description</p> -->
+					}
+					<div style="text-align: right; margin-right: 72px;">
+						<button type="submit" class="btn btn-lg btn-primary">Vote</button>
+					</div>
+				}
+			</div>
+		</div>
+	}
+	@if(!timer.checkAllowVote()) {
+		<div class="container">
+			<div class="col-xs-6 col-sm-3 sidebar-offcanvas">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#rankByCriterion" data-toggle="tab">Ranking by Criterion</a></li>
+					<!-- <li><a href="#password" data-toggle="tab">Ranking by Contestant</a></li> -->
+				</ul>	
+			</div>
+			<div class="col-xs-12 col-sm-9">
+				<div class="tab-content">
+					<div class="tab-pane active" id="rankByCriterion">
+						@for(r <- ranking) {
+							<h1>@r.getCriterion().getName()</h1>
+							<!-- <hr> -->
+							<br>
+							<table class="table" style="font-size: 16px;">
+								<tr>
+									<td>Rank</td>
+									<td>Contestant Name</td>
+									<td>Score</td>
+								</tr>
+								@for(contestant <- r.getContestants()) {
+									<tr>
+										<td>@contestant.getRank()</td>
+										<td>@contestant.getName()</td>
+										<td>@contestant.getScore()</td>
+									</tr>
+								}
+							</table>
+							<br>
+						}
+					</div>	
+					<!-- <div class="tab-pane" id="password">
+					</div> -->
+				</div>
+			</div>
+		</div>
+	}
 }
