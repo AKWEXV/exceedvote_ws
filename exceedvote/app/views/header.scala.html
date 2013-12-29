@@ -29,16 +29,16 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="/">Home</a></li>
+						<!-- <li><a href="/">Home</a></li> -->
 						<li><a href="/contestant">Contestants</a></li>
 						@if(user.getRole().getName() != "Admin") {
-							<li><a href="/ranking">Ranking</a></li>
 							<li><a href="/about">About</a></li>
 						}
 						@if(user.getRole().getName() == "Admin") {
 							<li><a href="/criteria/management">Criteria Management</a></li>
 							<li><a href="/contestants/management">Contestants Management</a></li>
 							<li><a href="/users/management">Users Management</a></li>
+							<li><a href="/timer/management">Timer Management</a></li>
 						}
 					</ul>	
 					<ul class="nav navbar-nav navbar-right">

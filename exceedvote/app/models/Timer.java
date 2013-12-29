@@ -41,7 +41,7 @@ public class Timer extends Model {
 	}
 
 	public Date getStart() {
-		return start;
+		return this.start;
 	}
 
 	public void setStart(Date start) {
@@ -49,13 +49,13 @@ public class Timer extends Model {
 	}
 
 	public Date getFinish() {
-		return finish;
+		return this.finish;
 	}
 
 	public void setFinish(Date finish) {
 		this.finish = finish;
 	}
-	
+
 	public boolean checkAllowVote() {
         Date now = new Date();
         Date start = this.getStart();

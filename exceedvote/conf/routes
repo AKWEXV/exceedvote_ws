@@ -4,7 +4,6 @@
 
 # Home page
 GET     /                           			controllers.Application.index()
-GET		/ranking 								controllers.Rank.index()
 POST	/vote 									controllers.Vote.webVote()
 GET		/vote 									controllers.Vote.index()
 GET     /contestant                 			controllers.Contestants.index()

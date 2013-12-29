@@ -66,7 +66,7 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(views.html.home.render(User.findByUsername(request().username()), Timer.find.ref((long) 1), Criterion.find.all(), Contestant.find.all()));
+        return ok(views.html.home.render(Rank.getRanking(), User.findByUsername(request().username()), Timer.find.ref((long) 1), Criterion.find.all(), Contestant.find.all()));
     }
 
     @Security.Authenticated(Secured.class)

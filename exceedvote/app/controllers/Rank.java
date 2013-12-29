@@ -34,5 +34,10 @@ public class Rank extends Controller {
 			ranking.add(r);
 		}
 	}
+
+	public static List<Ranking> getRanking() {
+		updateRanking(ranking);
+		return ranking;
+	}
 	
 }
