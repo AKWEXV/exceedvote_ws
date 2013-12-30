@@ -67,5 +67,16 @@ public class Timer extends Model {
         	return false;
         }
 	}
+	
+	public boolean checkCompetitionOver() {
+		Date now = new Date();
+		Date finish = this.getFinish();
+		if (now.after(finish)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
  	
 }
