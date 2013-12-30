@@ -15,8 +15,13 @@ public class Rank extends Controller {
 	public static List<Ranking> ranking = new ArrayList<Ranking>();
 
 	public static Result rank() {
-		updateRanking(ranking);
-		return ok(views.xml.rank.render(ranking));
+		if (Timer.find.ref((long) 1).checkCompetitionOver()) {
+			updateRanking(ranking);
+			return ok(views.xml.rank.render(ranking));
+		}
+		else {
+			return badRequest("You cannot view ranking now, Please wait until competition is over.");
+		}
 	}
 
 	@Security.Authenticated(Secured.class)
