@@ -100,6 +100,38 @@ public class RESTfulTest extends WithApplication {
     }
     @Test
     public void testVote()	{
+    		running(testServer(PORT),new Runnable() {
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				User user = User.findByUsername("apiwat");
+				String vote_xml = "<vote>\n" +
+						"<contestants>\n" +
+							"<contestant>\n" +
+								"<id>1</id>\n" +
+								"<score>9</score>\n" +
+							"</contestant>\n"+
+							"<contestant>\n" +
+								"<id>2</id>\n" +
+								"<score>7</score>\n" +
+							"</contestant>\n" +
+						"</contestants>\n" +
+					"</vote>";
+	
+	
+				RestAssured.given()
+						.contentType(ContentType.XML)
+						.content(vote_xml)
+					.when()
+						.auth().digest(user.username, user.password)
+						.post("/exceedvote/api/v1/criterion/3/vote")
+					.then()
+						.statusCode(201);
+			}
+    		});
+    }
+    @Test
+    public void testMyVote()	{
     		running(testServer(PORT), new Runnable() {
 			@Override
 			public void run() {
@@ -119,28 +151,6 @@ public class RESTfulTest extends WithApplication {
 							.then()
 								.statusCode(401);
 				
-				String vote_xml = "<vote>\n" +
-									"<contestants>\n" +
-										"<contestant>\n" +
-											"<id>1</id>\n" +
-											"<score>9</score>\n" +
-										"</contestant>\n"+
-										"<contestant>\n" +
-											"<id>2</id>\n" +
-											"<score>7</score>\n" +
-										"</contestant>\n" +
-									"</contestants>\n" +
-								"</vote>";
-				
-				
-				RestAssured.given()
-								.contentType(ContentType.XML)
-								.content(vote_xml)
-						.when()
-								.auth().digest(user.username, user.password)
-								.post("/exceedvote/api/v1/criterion/3/vote")
-						.then()
-								.statusCode(201);
 				
 			}
     		});
