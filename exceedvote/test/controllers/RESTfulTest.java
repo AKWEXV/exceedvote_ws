@@ -1,18 +1,32 @@
-package models;
+package controllers;
 
-import com.jayway.restassured.RestAssured;
+import models.Criterion;
+import models.User;
+
+import org.hamcrest.xml.HasXPath;
 import org.junit.*;
 
-import play.test.WithApplication;
-
-
-
-import static org.fest.assertions.Assertions.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.*;
-import static play.test.Helpers.*;
-import static org.hamcrest.Matchers.*;
+import java.util.*;
 
-public class GetMethodTesting extends WithApplication {
+import play.mvc.*;
+import play.libs.*;
+import play.test.*;
+
+import static play.test.Helpers.*;
+import static org.fest.assertions.Assertions.*;
+
+import com.avaje.ebean.Ebean;
+import com.gargoylesoftware.htmlunit.xml.XmlPage;
+import com.google.common.collect.ImmutableMap;
+import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.path.xml.element.Node;
+
+public class RESTfulTest extends WithApplication {
+
 	private static final int PORT = 3333;
 
     @Before
@@ -85,18 +99,72 @@ public class GetMethodTesting extends WithApplication {
     		});
     }
     @Test
-    public void testMyVote()	{
-    		running(testServer(PORT), new Runnable() {
+    public void testVote()	{
+    		running(testServer(PORT),new Runnable() {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				User user = User.findByUsername("apiwat");
-				RestAssured.given().auth().digest("apiwat", "apiwat").when().get("/exceedvote/api/v1/myvote").then().statusCode(204);
-				RestAssured.given().auth().digest("badId", "badPassword").when().get("/exceedvote/api/v1/myvote").then().statusCode(401);
+				String vote_xml = "<vote>\n" +
+						"<contestants>\n" +
+							"<contestant>\n" +
+								"<id>1</id>\n" +
+								"<score>9</score>\n" +
+							"</contestant>\n"+
+							"<contestant>\n" +
+								"<id>2</id>\n" +
+								"<score>7</score>\n" +
+							"</contestant>\n" +
+						"</contestants>\n" +
+					"</vote>";
+	
+	
+				RestAssured.given()
+						.contentType(ContentType.XML)
+						.content(vote_xml)
+					.when()
+						.auth().digest(user.username, user.password)
+						.post("/exceedvote/api/v1/criterion/3/vote")
+					.then()
+						.statusCode(201);
+			}
+    		});
+    }
+    @Test
+    public void testMyVote()	{
+    		running(testServer(PORT), new Runnable() {
+			@Override
+			public void run() {
+				//before Vote
+				User user = User.authenticate("apiwat","apiwat");
+				RestAssured.given()
+								.auth().digest(user.username, user.password)
+							.when()
+								.get("/exceedvote/api/v1/myvote")
+							.then()
+								.statusCode(200);
+				
+				RestAssured.given()
+								.auth().digest("badId", "badPassword")
+							.when()
+								.get("/exceedvote/api/v1/myvote")
+							.then()
+								.statusCode(401);
+				
 				
 			}
     		});
     }
-    
-    
+    @Test
+    public void testRanking()	{
+    		running(testServer(PORT), new Runnable()	{
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				String expectedRoot = "rank";
+				String actualRoot= RestAssured.get("exceedvote/api/v1/rank").xmlPath().get().name();
+				assertEquals(expectedRoot, actualRoot);
+			}
+    		});
+    }
 }
