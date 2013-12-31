@@ -5,11 +5,16 @@ ExceedVote v.2 is web application using Play! framework 2.2.1 for 219451 Web Ser
 
 ExceedVote v.2 adding new type of voting, and RESTful services.
 
-**Quick Links**
+**Get Started**
+
+* [Installation Guide](https://github.com/AKWEXV/exceedvote_ws/wiki/Installation-Guide)
+* Web Interface [User](https://github.com/AKWEXV/exceedvote_ws/wiki/User-Web-Manual)/[Admin](https://github.com/AKWEXV/exceedvote_ws/wiki/Admin-Web-Manual) Manual
+* [API Document](https://github.com/AKWEXV/exceedvote_ws/wiki/API-Document)
+
+**Develop Documents**
 
 * [Requirement](https://github.com/AKWEXV/exceedvote_ws/wiki/Requirement)
 * [Diagrams](https://github.com/AKWEXV/exceedvote_ws/wiki/Diagrams)
-* [API Document](https://github.com/AKWEXV/exceedvote_ws/wiki/API-Document)
 * [Development Plan](https://github.com/AKWEXV/exceedvote_ws/wiki/Development-Plan)
 
 Repository Contents
