@@ -1,8 +1,10 @@
 contestants:
+    # List contestants (entrants in the competition) here.
+    # These are pre-loaded into the application. You can add/edit/delete contestants via the admin interface.
 
     # - !!models.Contestant
     #     id:              1
-    #     name:            Angried Pork
+    #     name:            Angrier Pork
     #     description:     Some description.
 
     # - !!models.Contestant
@@ -13,77 +15,72 @@ contestants:
     - !!models.Contestant
         id:              1
         name:            Organizer
-        description:     By Simon Adrian Jens
+        description:     Manage Google contacts, calendar, and Todo from a desktop app by Adrian, Jens, and Simon (web services project)
 
     - !!models.Contestant
         id:              2
         name:            Product Information Server
-        description:     By Akarawit Jaktip
+        description:     Provides a web service and web app for product information including description and EAN codes, for use by applications needing product data. Automatically imports product data from a public provider, by Akarawit and Jaktip.
 
     - !!models.Contestant
         id:              3
         name:            eXceedVote RESTful Server
-        description:     By Chanon Kanin Pawis
+        description:     eXccedVote server with RESTful API by Chanon, Kanin, Pawis
 
     - !!models.Contestant
         id:              4
-        name:            eXceedVote RESTful Server (using Play! Framework)
-        description:     By Apiwat Kanokphol Witsarut
+        name:            eXceedVote RESTful Server using Play!
+        description:     Version 2 of ExceedVote server used at 2013 camp. Now includes more voting options and a fully RESTful interface with Digest Authentication, by Apiwat, Kanokphol, and Witsarut
 
     - !!models.Contestant
         id:              5
-        name:            eXceedVote Client (iOS)
+        name:            eXceedVote iOS Application
         description:     By Artima
 
     - !!models.Contestant
         id:              6
-        name:            eXceedVote Client (Android)
+        name:            eXceedVote Android Application
         description:     By Kunat
 
     - !!models.Contestant
         id:              7
-        name:            eXceedVote Client (Java Desktop App)
+        name:            eXceedVote Java Desktop Client application
         description:     By Thiwat
 
-    - !!models.Contestant
-        id:              8
-        name:            eXceedVote Client (PhoneGap)
-        description:     By Marisa
 
 criteria:
-
+    # Predefined voting (judging) criteria here.
+    # Each criteria should have a descriptive name, a unique id number, and a type.
+    # type 1 = vote for one contestant for this criteria, like voting in election
+    # type 2 = assign each contentant a score (1-5 or 1-10) for this criteria, liking judging in the olympics
+    # Admin user can add/edit/delete criteria via the web UI
     - !!models.Criterion
         id:              1
-        name:            Popular Vote
+        name:            Overall favorite project
         type:            1
 
     - !!models.Criterion
         id:              2
-        name:            Creativity Award
+        name:            Most creative product
         type:            1
 
     - !!models.Criterion
         id:              3
-        name:            Best Design
+        name:            Best Software Design
         type:            1
 
     - !!models.Criterion
         id:              4
-        name:            Usability
-        type:            2
-
-    - !!models.Criterion
-        id:              5
-        name:            Performance
+        name:            Usability or Playability of Application 
         type:            2
 
     - !!models.Criterion
         id:              6
-        name:            Graphic
+        name:            Quality & Completeness of graphics and user interface
         type:            2
 
 roles:
-
+    # Each user has one of these roles
     - !!models.Role
         id:              1
         name:            Student
@@ -136,7 +133,6 @@ users:
         role:
             !!models.Role
               id: 3
-
         contestant:
             !!models.Contestant
               id: 1
@@ -187,7 +183,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         contestant:
             !!models.Contestant
               id: 3
@@ -200,7 +195,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         contestant:
             !!models.Contestant
               id: 2
@@ -213,7 +207,6 @@ users:
         role:
             !!models.Role
               id: 3
-
         contestant:
             !!models.Contestant
               id: 1
@@ -238,7 +231,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         contestant:
             !!models.Contestant
               id: 4
@@ -251,7 +243,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         contestant:
             !!models.Contestant
               id: 6
@@ -259,15 +250,12 @@ users:
         password:        kunat
         email:           kunat@exceedvote.com
 
+# A user who is not a contentant
     - !!models.User
         id:              13
         role:
             !!models.Role
               id: 1
-
-        contestant:
-            !!models.Contestant
-              id: 8
         username:        marisa
         password:        marisa
         email:           marisa@exceedvote.com
@@ -277,7 +265,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         contestant:
             !!models.Contestant
               id: 3
@@ -290,7 +277,6 @@ users:
         role:
             !!models.Role
               id: 3
-
         contestant:
             !!models.Contestant
               id: 1
@@ -303,7 +289,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         contestant:
             !!models.Contestant
               id: 7
@@ -316,7 +301,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         contestant:
             !!models.Contestant
               id: 4
@@ -324,17 +308,14 @@ users:
         password:        witsarut
         email:           witsarut@exceedvote.com
 
+# A user who is not a contentant
     - !!models.User
         id:              18
         role:
             !!models.Role
               id: 2
-
-        contestant:
-            !!models.Contestant
-              id: 1
         username:        jim
-        password:        jim
+        password:        himitsu
         email:           jim@exceedvote.com
 
 ballots:
