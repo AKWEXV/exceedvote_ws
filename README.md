@@ -1,9 +1,9 @@
 exceedvote_ws
 =============
 
-ExceedVote v.2 is web application using Play! Framework that enables voting or judging of a competition. It is based on [KKPS's ExceedVote](https://github.com/KKPS/exceedvote) that was written for Kasetsart's Software Spec & Design course, and used in the 2012 Exceed Camp.
+ExceedVote v.2 is a web application using Play! Framework that enables voting or judging of contestants (or entrants) in a competition. It is based on [KKPS's ExceedVote](https://github.com/KKPS/exceedvote) that was written for Kasetsart's Software Spec & Design course, and used in the 2012 Exceed Camp.
 
-ExceedVote v.2 adds score-based voting (e.g. assign each contestant a score of 1-10), and a RESTful web service interface.
+ExceedVote v.2 adds score-based voting (e.g. assign each contestant a score of 1-10 on a criterion), and a RESTful web service interface.
 
 **Getting Started**
 
@@ -13,7 +13,7 @@ ExceedVote v.2 adds score-based voting (e.g. assign each contestant a score of 1
 
 **Developer Documents**
 
-* [Requirement](https://github.com/AKWEXV/exceedvote_ws/wiki/Requirement)
+* [Requirements](https://github.com/AKWEXV/exceedvote_ws/wiki/Requirement)
 * [Diagrams](https://github.com/AKWEXV/exceedvote_ws/wiki/Diagrams)
 * [Development Plan](https://github.com/AKWEXV/exceedvote_ws/wiki/Development-Plan)
 
@@ -28,7 +28,7 @@ Repository Contents
 | test-cases     | Contain the test cases documents. |
 | use-cases      | Contain the use cases (software requirement specification). |
 
-Member
+Team Members
 -------------
 1. Apiwat Srisirisitthikul (5410546385) - Github: [KimApiwat](https://github.com/KimApiwat)
 2. Kanokphol Techarattanaprasert (5410545915) - Github: [sonnyhonny](https://github.com/sonnyhonny)
