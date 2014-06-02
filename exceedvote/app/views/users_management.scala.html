@@ -60,6 +60,28 @@
 				</div>
 			</form>
 			}
+			<h1>Edit users</h1>	
+			<table class="table">
+				<th>
+					<td>Username</td>
+					<td>Email</td>
+					<td>Role</td>
+					<td>Edit</td>
+					<td>Delete</td>
+				</th>
+				@for(user <- users) {
+				<tr>
+					<td>@user.getId()</td>
+					<td>@user.getUsername()</td>
+					<td>@user.getEmail()</td>
+					<td>@user.getRole().getId()</td>
+					<td><a href="/users/management/@user.getId()"><button class="btn btn-primary">Edit</button></a></td>
+					@helper.form(routes.Users.deleteUser(user.getId())) {
+					<td><button type="submit" class="btn btn-danger">Delete</button></td>
+					}
+				</tr>
+				}
+			</table>
 			@for(u <- users) {
 				<div class="page-header">
 					<h1 id="@u.getId()">@u.getUsername()</h1>	

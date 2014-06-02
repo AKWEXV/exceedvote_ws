@@ -106,4 +106,17 @@ public class Users extends Controller {
 		}
 	}
 
+	@Security.Authenticated(Secured.class)
+	public static Result viewUser(Long id) {
+		User user = User.findByUsername(request().username());
+		if (user.getRole().getName().equals("Admin")) {
+			return ok(views.html.user_management.render(User.find.where().eq("id", id).findUnique(), user));
+		}
+		else {
+			return redirect(
+                routes.Application.index()
+            );
+		}
+	}
+
 }

@@ -35,6 +35,19 @@ public class Criteria extends Controller {
 	}
 
 	@Security.Authenticated(Secured.class)
+	public static Result viewCriterion(Long id) {
+		User user = User.findByUsername(request().username());
+		if (user.getRole().getName().equals("Admin")) {
+			return ok(views.html.criterion_management.render(Criterion.find.where().eq("id", id).findUnique(), user));
+		}
+		else {
+			return redirect(
+                routes.Application.index()
+            );
+		}
+	}
+
+	@Security.Authenticated(Secured.class)
 	public static Result criteriaManagement() {
 		User user = User.findByUsername(request().username());
 		if (user.getRole().getName().equals("Admin")) {

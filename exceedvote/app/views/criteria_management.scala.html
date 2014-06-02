@@ -42,6 +42,26 @@
 				</div>
 			}
 			<!-- </form> -->
+			<h1>Edit criteria</h1>	
+			<table class="table">
+				<th>
+					<td>Criterion</td>
+					<td>Type</td>
+					<td>Edit</td>
+					<td>Delete</td>
+				</th>
+				@for(criterion <- criteria) {
+				<tr>
+					<td>@criterion.getId()</td>
+					<td>@criterion.getName()</td>
+					<td>@criterion.getType()</td>
+					<td><a href="/criteria/management/@criterion.getId()"><button class="btn btn-primary">Edit</button></a></td>
+					@helper.form(routes.Criteria.deleteCriterion(criterion.getId())) {
+					<td><button type="submit" class="btn btn-danger">Delete</button></td>
+					}
+				</tr>
+				}
+			</table>
 			@for(criterion <- criteria) {
 				<div class="page-header">
 					<h1 id="@criterion.getId()">@criterion.getName()</h1>	
