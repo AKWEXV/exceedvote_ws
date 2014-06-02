@@ -48,19 +48,13 @@
 						<input type="text" class="form-control" name="role_id">
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="" class="col-sm-3 control-label">Contestant ID : </label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" name="contestant_id">
-					</div>
-				</div>
 				<div style="text-align: right; margin-right: 72px;">
 					<button class="btn btn-primary">Save</button>
 					<button class="btn btn-danger">Cancel</button>
 				</div>
 			</form>
 			}
-			<h1>Edit users</h1>	
+			<h1 style="margin-bottom: 20px;">Edit users</h1>	
 			<table class="table">
 				<th>
 					<td>Username</td>
@@ -82,48 +76,6 @@
 				</tr>
 				}
 			</table>
-			@for(u <- users) {
-				<div class="page-header">
-					<h1 id="@u.getId()">@u.getUsername()</h1>	
-				</div>
-				@helper.form(routes.Users.updateUser(u.getId()), 'class -> "form-horizontal") {
-						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Username : </label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" name="username" value="@u.getUsername()">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Password : </label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" name="password" value="@u.getPassword()">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Email : </label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" name="email" value="@u.getEmail()">
-							</div>
-						</div>			
-						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Role ID : </label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" name="role_id" value="@u.getRole().getId()">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="" class="col-sm-3 control-label">Contestant ID : </label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" name="contestant_id"value="@u.getContestant().getId()">
-							</div>
-						</div>
-							<button type="submit" class="btn btn-primary" style="float: left; margin-left: 565px;">Save changes</button>
-				}
-				@helper.form(routes.Users.deleteUser(u.getId()), 'class -> "form-horizontal") {
-							<button type="submit" class="btn btn-danger" style="float: left; margin-left: 5px;">Delete</button>
-				}
-				<br><br>
-			}
 		</div>
 		
 	</div>

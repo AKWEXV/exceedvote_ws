@@ -41,7 +41,6 @@ create table timer (
 create table user (
   id                        bigint auto_increment not null,
   role_id                   bigint,
-  contestant_id             bigint,
   username                  varchar(255),
   password                  varchar(255),
   email                     varchar(255),
@@ -65,12 +64,10 @@ alter table ballot add constraint fk_ballot_contestant_1 foreign key (contestant
 create index ix_ballot_contestant_1 on ballot (contestant_id);
 alter table user add constraint fk_user_role_2 foreign key (role_id) references role (id) on delete restrict on update restrict;
 create index ix_user_role_2 on user (role_id);
-alter table user add constraint fk_user_contestant_3 foreign key (contestant_id) references contestant (id) on delete restrict on update restrict;
-create index ix_user_contestant_3 on user (contestant_id);
-alter table vote add constraint fk_vote_user_4 foreign key (user_id) references user (id) on delete restrict on update restrict;
-create index ix_vote_user_4 on vote (user_id);
-alter table vote add constraint fk_vote_criterion_5 foreign key (criterion_id) references criterion (id) on delete restrict on update restrict;
-create index ix_vote_criterion_5 on vote (criterion_id);
+alter table vote add constraint fk_vote_user_3 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_vote_user_3 on vote (user_id);
+alter table vote add constraint fk_vote_criterion_4 foreign key (criterion_id) references criterion (id) on delete restrict on update restrict;
+create index ix_vote_criterion_4 on vote (criterion_id);
 
 
 

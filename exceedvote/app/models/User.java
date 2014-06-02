@@ -19,9 +19,6 @@ public class User extends Model {
 	@OneToOne
 	public Role role;
 	
-	@OneToOne
-	public Contestant contestant;
-	
 	@Constraints.Required
 	public String username;
 	
@@ -36,12 +33,11 @@ public class User extends Model {
 		
 	}
 	
-	public User(String username, String password, String email, Role role, Contestant contestant) {
+	public User(String username, String password, String email, Role role) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.role = role;
-		this.contestant = contestant;
 	}
 
 	public static String getPasswordFromUsername(String username) {
@@ -90,26 +86,24 @@ public class User extends Model {
 	}
 	
 	// Admin
-	public static void addUser(String username, String password, String email, Long role_id, Long contestant_id ) {
+	public static void addUser(String username, String password, String email, Long role_id) {
 		User user = find.where()
 				.eq("username", username)
 				.findUnique();
 		if (user == null) {
 			Role role = Role.find.where().eq("id", role_id).findUnique();
-			Contestant contestant = Contestant.find.where().eq("id", contestant_id).findUnique();
-			User newUser = new User(username, password, email, role, contestant);
+			User newUser = new User(username, password, email, role);
 			newUser.save();
 		}
 	}
 	
-	public static void adminUpdateUser(Long id, String username, String password, String email, Long role_id, Long contestant_id) {
+	public static void adminUpdateUser(Long id, String username, String password, String email, Long role_id) {
 		User user = find.ref(id);
 		if (user != null) {
 			user.setUsername(username);
 			user.setPassword(password);
 			user.setEmail(email);
 			user.setRole(Role.find.where().eq("id", role_id).findUnique());
-			user.setContestant(Contestant.find.where().eq("id", contestant_id).findUnique());
 			user.update();
 		}
 	}
@@ -128,14 +122,6 @@ public class User extends Model {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	public Contestant getContestant() {
-		return contestant;
-	}
-
-	public void setContestant(Contestant contestant) {
-		this.contestant = contestant;
 	}
 
 	public String getUsername() {

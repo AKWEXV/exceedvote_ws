@@ -55,8 +55,7 @@ public class Users extends Controller {
 				form().bindFromRequest().get("username"),
 				form().bindFromRequest().get("password"),
 				form().bindFromRequest().get("email"),
-				Long.parseLong(form().bindFromRequest().get("role_id")),
-				Long.parseLong(form().bindFromRequest().get("contestant_id"))
+				Long.parseLong(form().bindFromRequest().get("role_id"))
 			);
 			return redirect(
 	            routes.Users.usersManagement()
@@ -77,8 +76,7 @@ public class Users extends Controller {
 				form().bindFromRequest().get("username"),
 				form().bindFromRequest().get("password"),
 				form().bindFromRequest().get("email"),
-				Long.parseLong(form().bindFromRequest().get("role_id")),
-				Long.parseLong(form().bindFromRequest().get("contestant_id"))
+				Long.parseLong(form().bindFromRequest().get("role_id"))
 			);
 			return redirect(
 		        routes.Users.usersManagement()
