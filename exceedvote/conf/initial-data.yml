@@ -1,15 +1,5 @@
 contestants:
 
-    # - !!models.Contestant
-    #     id:              1
-    #     name:            Angried Pork
-    #     description:     Some description.
-
-    # - !!models.Contestant
-    #     id:              2
-    #     name:            WorldNote
-    #     description:     Some description.
-
     - !!models.Contestant
         id:              1
         name:            Organizer
@@ -22,64 +12,35 @@ contestants:
 
     - !!models.Contestant
         id:              3
-        name:            eXceedVote RESTful Server
-        description:     By Chanon Kanin Pawis
-
-    - !!models.Contestant
-        id:              4
-        name:            eXceedVote RESTful Server (using Play! Framework)
-        description:     By Apiwat Kanokphol Witsarut
-
-    - !!models.Contestant
-        id:              5
-        name:            eXceedVote Client (iOS)
-        description:     By Artima
-
-    - !!models.Contestant
-        id:              6
-        name:            eXceedVote Client (Android)
-        description:     By Kunat
-
-    - !!models.Contestant
-        id:              7
-        name:            eXceedVote Client (Java Desktop App)
+        name:            eXceedVote Java Desktop
         description:     By Thiwat
 
     - !!models.Contestant
-        id:              8
-        name:            eXceedVote Client (PhoneGap)
-        description:     By Marisa
+        id:              4
+        name:            Playful eXceedVote Server
+        description:     By Apiwat Kanokphol Witsarut
+
 
 criteria:
 
     - !!models.Criterion
         id:              1
-        name:            Popular Vote
+        name:            Creativity and Originality
         type:            1
 
     - !!models.Criterion
         id:              2
-        name:            Creativity Award
+        name:            Best Implementation (Completeness, Reliability)
         type:            1
 
     - !!models.Criterion
         id:              3
-        name:            Best Design
-        type:            1
+        name:            Usability/Playability
+        type:            2
 
     - !!models.Criterion
         id:              4
-        name:            Usability
-        type:            2
-
-    - !!models.Criterion
-        id:              5
-        name:            Performance
-        type:            2
-
-    - !!models.Criterion
-        id:              6
-        name:            Graphic
+        name:            Overall Project Evaluation
         type:            2
 
 roles:
@@ -91,7 +52,7 @@ roles:
 
     - !!models.Role
         id:              2
-        name:            Teacher
+        name:            Instructor
         criterionVote:   5
 
     - !!models.Role
@@ -111,7 +72,6 @@ users:
         role:
             !!models.Role
               id: 4
-
         username:        admin
         password:        admin
         email:           admin@exceedvote.com
@@ -121,7 +81,6 @@ users:
         role:
             !!models.Role
               id: 2
-
         username:        mushi
         password:        webservices
         email:           mushi@exceedvote.com
@@ -131,7 +90,6 @@ users:
         role:
             !!models.Role
               id: 3
-
         username:        adrian
         password:        adrian
         email:           adrian@exceedvote.com
@@ -141,7 +99,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        akarawit
         password:        akarawit
         email:           akarawit@exceedvote.com
@@ -151,7 +108,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        apiwat
         password:        apiwat
         email:           apiwat@exceedvote.com
@@ -161,7 +117,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        artima
         password:        artima
         email:           artima@exceedvote.com
@@ -171,7 +126,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        chanon
         password:        chanon
         email:           chanon@exceedvote.com
@@ -181,7 +135,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        jaktip
         password:        jaktip
         email:           jaktip@exceedvote.com
@@ -191,7 +144,6 @@ users:
         role:
             !!models.Role
               id: 3
-
         username:        jens
         password:        jens
         email:           jens@exceedvote.com
@@ -201,7 +153,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        kanin
         password:        kanin
         email:           kanin@exceedvote.com
@@ -211,7 +162,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        kanokphol
         password:        kanokphol
         email:           kanokphol@exceedvote.com
@@ -221,7 +171,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        kunat
         password:        kunat
         email:           kunat@exceedvote.com
@@ -231,7 +180,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        marisa
         password:        marisa
         email:           marisa@exceedvote.com
@@ -241,7 +189,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        pawis
         password:        pawis
         email:           pawis@exceedvote.com
@@ -251,7 +198,6 @@ users:
         role:
             !!models.Role
               id: 3
-
         username:        simon
         password:        simon
         email:           simon@exceedvote.com
@@ -261,7 +207,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        thiwat
         password:        thiwat
         email:           thiwat@exceedvote.com
@@ -271,7 +216,6 @@ users:
         role:
             !!models.Role
               id: 1
-
         username:        witsarut
         password:        witsarut
         email:           witsarut@exceedvote.com
@@ -281,7 +225,6 @@ users:
         role:
             !!models.Role
               id: 2
-
         username:        jim
         password:        jim
         email:           jim@exceedvote.com
@@ -322,5 +265,5 @@ timers:
 
     - !!models.Timer
         id:              1
-        start:           '2014-01-01 00:00:00 +7:00'
-        finish:          '2015-01-01 00:00:00 +7:00'
+        start:           '2014-06-06 08:00:00 +7:00'
+        finish:          '2014-06-06 17:00:00 +7:00'
