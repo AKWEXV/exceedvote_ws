@@ -1,9 +1,9 @@
 exceedvote_ws
 =============
 
-ExceedVote v.2 is a web application using Play! Framework that enables voting or judging of contestants (or entrants) in a competition. It is based on [KKPS's ExceedVote](https://github.com/KKPS/exceedvote) that was written for Kasetsart's Software Spec & Design course, and used in the 2012 Exceed Camp.
+ExceedVote v.2 is a web application using Play! Framework that enables voting or judging of contestants in a competition. It is based on [KKPS's ExceedVote](https://github.com/KKPS/exceedvote) that was written for Kasetsart's Software Spec & Design course, and used in the 2012 Exceed Camp.
 
-ExceedVote v.2 adds score-based voting (e.g. assign each contestant a score of 1-10 on a criterion), and a RESTful web service interface.
+ExceedVote v.2 has both selection-voting (choose one, like voting in an election) and score-based voting (assign each contestant a score of 1-10 on a criterion), and a RESTful web service interface.
 
 **Getting Started**
 
