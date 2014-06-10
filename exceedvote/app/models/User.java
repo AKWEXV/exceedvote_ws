@@ -25,7 +25,7 @@ public class User extends Model {
 	@Constraints.Required
 	public String password;
 	
-	public String email;
+	// public String email;
 	
 	public static Finder<Long, User> find = new Finder<Long, User>(Long.class, User.class);
 	

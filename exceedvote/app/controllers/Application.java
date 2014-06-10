@@ -9,6 +9,7 @@ import models.Contestant;
 import models.Criterion;
 import models.Timer;
 import models.User;
+import models.Vote;
 
 public class Application extends Controller {
 
@@ -66,7 +67,14 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(views.html.home.render(Rank.getRanking(), User.findByUsername(request().username()), Timer.find.ref((long) 1), Criterion.find.all(), Contestant.find.all()));
+        User user = User.findByUsername(request().username());
+        // List<models.Vote> listVote = models.Vote.find.where().eq("user", user).findList();
+        if (models.Vote.find.where().eq("user", user).findList().size() > 0) {
+            return ok(views.html.vote.render(Rank.getRanking(), user, Timer.find.ref((long) 1), models.Vote.find.where().eq("user", user).findList()));
+        }
+        else {
+            return ok(views.html.home.render(Rank.getRanking(), user, Timer.find.ref((long) 1), Criterion.find.all(), Contestant.find.all()));
+        }
     }
 
     @Security.Authenticated(Secured.class)

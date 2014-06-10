@@ -1,16 +1,38 @@
-@(user: User)
+@(ranking: List[models.Ranking], user: User, timer: models.Timer, listVote: List[models.Vote])
 
-@header(user, title = "Contestants") {
+@import helper._
 
-	<div class="jumbotron">
-		<div class="container">
-			<h1>Vote</h1>	
-			<p>Voting</p>
-		</div>	
-	</div>
+@header(user, title = "Your Vote") {
 
 	<div class="container">
-		
+		<div class="col-sm-9">
+			@if(flash.contains("success")) {
+					<p class="text-success" style="margin-top: 30px">
+	                    @flash.get("success")
+	                </p>
+				}
+			@for(vote <- listVote) {
+				<div class="page-header">
+					<h1>@vote.getCriterion().getName()</h1>	
+				</div>
+				@if(vote.getBallots().size() < 2) {
+					@for(ballot <- vote.getBallots()) {
+						<p>You choose <strong>@ballot.getContestant.getName()</strong></p>
+					}
+
+				} else {
+					@for(ballot <- vote.getBallots()) {
+						<p><strong>@ballot.getContestant.getName()</strong> : (Score) @ballot.getScore()</p>
+					}
+				}
+			}
+
+			@helper.form(routes.Vote.reset) {
+			<div style="text-align: right">
+				<a href="/reset"><button type="submit" class="btn btn-lg btn-danger">Reset Vote</button></a>
+			</div>
+			}
+		</div>
 	</div>
 
 }

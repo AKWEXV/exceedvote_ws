@@ -16,12 +16,12 @@ public class Global extends GlobalSettings {
 				Ebean.save(all.get("criteria"));
 				Ebean.save(all.get("roles"));
 				Ebean.save(all.get("users"));
-				Ebean.save(all.get("ballots"));
-				Ebean.save(all.get("votes"));
-				for(Object vote: all.get("votes")) {
-                    // Insert the ... relation
-                    Ebean.saveManyToManyAssociations(vote, "ballots");
-                }
+				// Ebean.save(all.get("ballots"));
+				// Ebean.save(all.get("votes"));
+				// for(Object vote: all.get("votes")) {
+    //                 // Insert the ... relation
+    //                 Ebean.saveManyToManyAssociations(vote, "ballots");
+    //             }
 				Ebean.save(all.get("timers"));
 			}
 		}

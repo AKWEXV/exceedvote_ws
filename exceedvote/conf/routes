@@ -4,6 +4,8 @@
 
 # Home page
 GET     /                           			controllers.Application.index()
+POST    /reset                                  controllers.Vote.reset()
+
 
 POST		/vote 								controllers.Vote.webVote()
 GET		/vote 								controllers.Vote.index()

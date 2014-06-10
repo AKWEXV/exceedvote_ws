@@ -40,6 +40,11 @@
 				</ul>	
 			</div>
 			<div class="col-sm-9">
+				@if(flash.contains("error")) {
+					<p class="text-warning">
+	                    @flash.get("error")
+	                </p>
+				}
 				@helper.form(routes.Vote.webVote(), 'class -> "form-horizontal") {
 					@for(criterion <- criteria) {
 						<div class="page-header">
@@ -47,6 +52,7 @@
 						</div>
 						@if(criterion.getType() == 1) {
 							<select class="form-control" name="@(criterion.name)">
+								<option value="999">-- Choose One --</option>
 								@for(contestant <- contestants) {
 									<option value="@contestant.id">@contestant.name</option>
 								}
@@ -58,6 +64,7 @@
 								<div class="col-sm-7">
 									<!-- <input type="text" class="form-control" name="@(criterion.name).@(contestant.name)" placeholder="Type score 1 to 10" value=""> -->
 									<select class="form-control" name="@(criterion.name).@(contestant.name)">
+										<option value="999">-- Choose One --</option>
 										<option value="1">1</option>
 										<option value="2">2</option>
 										<option value="3">3</option>
@@ -79,7 +86,7 @@
 						<!-- <p>Description</p> -->
 					}
 					<div style="text-align: right; margin-right: 72px;">
-						<button type="submit" class="btn btn-lg btn-primary">Vote</button>
+						<button type="submit" class="btn btn-lg btn-primary">Submit Vote</button>
 					</div>
 				}
 			</div>

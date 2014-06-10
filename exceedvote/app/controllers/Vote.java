@@ -3,6 +3,7 @@ package controllers;
 import static play.data.Form.form;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import models.*;
 
@@ -26,7 +27,18 @@ public class Vote extends Controller {
 	
 	@Security.Authenticated(Secured.class)
 	public static Result index() {
-		return ok(views.html.vote.render(User.findByUsername(request().username())));
+		return ok(views.html.index.render());
+		//return ok(views.html.vote.render(User.findByUsername(request().username())));
+	}
+
+	@Security.Authenticated(Secured.class)
+	public static Result reset() {
+		User user = User.findByUsername(request().username());
+		for (models.Vote vote : models.Vote.find.where().eq("user", user).findList()) {
+			Long del = vote.getId();
+			models.Vote.find.ref(del).delete();
+		}
+		return ok(views.html.home.render(Rank.getRanking(), user, Timer.find.ref((long) 1), Criterion.find.all(), Contestant.find.all()));
 	}
 
 	@With(Authentication.class)
@@ -116,6 +128,12 @@ public class Vote extends Controller {
 				models.Vote newVote = new models.Vote(user, c);
 				if (c.getType() == 1) {
 					Long conId = Long.parseLong(form().bindFromRequest().get(c.getName()));
+					if (conId == 999) {
+						flash("error", "You need to select all vote");
+						return redirect(
+							routes.Application.index()
+							);
+					}
 					Ballot ballot = new Ballot(Contestant.find.ref(conId), user.getRole().getCriterionVote());
 					ballot.save();
 					newVote.addBallot(ballot);
@@ -123,11 +141,18 @@ public class Vote extends Controller {
 				else {
 					for (Contestant con : Contestant.find.all()) {
 						int score = Integer.parseInt(form().bindFromRequest().get(c.getName() + "." + con.getName()));
+						if (score == 999) {
+							flash("error", "You need to select all vote");
+							return redirect(
+								routes.Application.index()
+								);
+						}
 						Ballot ballot = new Ballot(con, score);
 						ballot.save();
 						newVote.addBallot(ballot);
 					}
 				}
+				flash("success", "You vote is now submitted");
 				newVote.save();
 			}
 			return redirect(
