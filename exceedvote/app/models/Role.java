@@ -6,24 +6,32 @@ import play.db.ebean.*;
 import play.data.validation.*;
 
 /**
+ * Role defines one Role that a User can have.
+ * A Role has a name and ID.
+ * In the current implementation of ExceedVote, the roles 
+ * are poorly used as they are mostly checked as Strings.
  * 
- * @author Sonny
+ * @author Kanokphol
+ * revised 11-6-2014: add javadoc, revise toString to return role name
  *
  */
 @Entity
 public class Role extends Model {
+	/** A dummy role for users that have no role, to avoid nulls. */
+	public static final Role NONE = new Role("None", 0);
 	
 	@Id
 	public Long id;
 	
-	public String name;
+	private String name;
 	
-	public int criterionVote;
-	
+	// the weight given to this role when computing ranks for votes?
+	private int criterionVote;
+	// find used in User class to locate roles.
 	public static Finder<Long, Role> find = new Finder<Long, Role>(Long.class, Role.class);
 
 	public Role() {
-		
+		this.name = "No name";
 	}
 	
 	public Role(String name, int criterionVote) {
@@ -55,8 +63,13 @@ public class Role extends Model {
 		this.criterionVote = criterionVote;
 	}
 	
+	/**
+	 * Return a string description of this role.
+	 * This obviates the need to use role.getName().
+	 * @return the role name
+	 */
 	public String toString() {
-		return "";
+		return name;
 	}
 	
 }

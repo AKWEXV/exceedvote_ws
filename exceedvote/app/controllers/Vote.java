@@ -3,21 +3,22 @@ package controllers;
 import static play.data.Form.form;
 
 import java.util.List;
-import java.util.ArrayList;
 
-import models.*;
+import models.Ballot;
+import models.Contestant;
+import models.Criterion;
+import models.Timer;
+import models.User;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import play.*;
-import play.data.*;
 import play.libs.XPath;
-import play.mvc.*;
-import models.*;
-import views.html.*;
-import views.xml.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.Security;
+import play.mvc.With;
 
 public class Vote extends Controller {
 	

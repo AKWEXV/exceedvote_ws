@@ -6,9 +6,11 @@ import play.db.ebean.*;
 import play.data.validation.*;
 
 /**
+ * A User of the application.
+ * Each user has a Role that determines his privileges in the app.
  * 
  * @author Sonny
- *
+ * @see app.models.Role
  */
 @Entity
 public class User extends Model {
@@ -16,6 +18,7 @@ public class User extends Model {
 	@Id
 	public Long id;
 	
+	/** The user's role. In this version a user can have only one role. */
 	@OneToOne
 	public Role role;
 	
@@ -25,19 +28,21 @@ public class User extends Model {
 	@Constraints.Required
 	public String password;
 	
-	// public String email;
+//JIM: email is still used in several methods and views.  Can't just comment it out.
+	public String email;
 	
 	public static Finder<Long, User> find = new Finder<Long, User>(Long.class, User.class);
 	
 	public User() {
-		
+		this("","","",Role.NONE);
 	}
 	
 	public User(String username, String password, String email, Role role) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.role = role;
+		// don't allow null role
+		this.role = (role == null)? Role.NONE : role;
 	}
 
 	public static String getPasswordFromUsername(String username) {
@@ -50,6 +55,7 @@ public class User extends Model {
 
 	/**
      * Authenticate a User.
+     * TODO encapsulate password checking so it can be changed.
      */
     public static User authenticate(String username, String password) {
         return find.where()
@@ -59,7 +65,8 @@ public class User extends Model {
     }
 
     /**
-	 * find user by username.
+	 * Find user by username.
+	 * @return first user with matching username, or null if not found.
 	*/
 	public static User findByUsername(String username) {
 		return find.where()
@@ -71,6 +78,8 @@ public class User extends Model {
 		User user = find.where()
 					    .eq("username", username)
 					    .findUnique();
+		//TODO throw exception to indicate username not found. Or (better) eliminate this method!
+		if (user==null) return;
 		user.setEmail(email);
 		user.update();
 	}
@@ -91,7 +100,8 @@ public class User extends Model {
 				.eq("username", username)
 				.findUnique();
 		if (user == null) {
-			Role role = Role.find.where().eq("id", role_id).findUnique();
+//			Role role = Role.find.where().eq("id", role_id).findUnique();
+			Role role = Role.find.byId(role_id);
 			User newUser = new User(username, password, email, role);
 			newUser.save();
 		}
@@ -103,7 +113,8 @@ public class User extends Model {
 			user.setUsername(username);
 			user.setPassword(password);
 			user.setEmail(email);
-			user.setRole(Role.find.where().eq("id", role_id).findUnique());
+			Role role = Role.find.byId(role_id);
+			user.setRole(role);
 			user.update();
 		}
 	}
@@ -121,6 +132,7 @@ public class User extends Model {
 	}
 
 	public void setRole(Role role) {
+		if (role == null) throw new RuntimeException("User's role may not be null");
 		this.role = role;
 	}
 
@@ -148,8 +160,12 @@ public class User extends Model {
 		this.email = email;
 	}
 	
+	/**
+	 * Return a string description of this user.
+	 * @return the user's named
+	 */
 	public String toString() {
-		return "";
+		return username;
 	}
 
 }

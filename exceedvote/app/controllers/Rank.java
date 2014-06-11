@@ -1,14 +1,16 @@
 package controllers;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import play.*;
-import play.data.*;
-import play.mvc.*;
-import models.*;
-import views.html.*;
-import views.xml.*;
+import models.Contestant;
+import models.Criterion;
+import models.Ranking;
+import models.Timer;
+import models.User;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.Security;
 
 public class Rank extends Controller {
 
@@ -20,7 +22,7 @@ public class Rank extends Controller {
 			return ok(views.xml.rank.render(ranking));
 		}
 		else {
-			return badRequest("You cannot view ranking now, Please wait until competition is over.");
+			return badRequest("You cannot view ranking now. Please wait until competition is over.");
 		}
 	}
 
