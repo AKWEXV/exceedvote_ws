@@ -1,50 +1,51 @@
+#
+# Ebean (as used by Play) assigns its own id to entities when they are
+# saved, even if you assign an id.  Therefore, don't assign an id yourself.
+#
+# Its pretty fragile programming to depend on id values anyway, so avoid it.
+# For assigning roles, try to use names.
+
 contestants:
 
     - !!models.Contestant
-        id:              1
         name:            Organizer
-        description:     By Simon Adrian Jens
+        description:     Desktop display of Google Calendar, Contacts, and Tasks with web service integration to Google and OAuth, by Simon Adrian Jens
 
     - !!models.Contestant
-        id:              2
         name:            Product Information Server
-        description:     By Akarawit Jaktip
+        description:     Manage and access a database of product information including EAN codes, by Akarawit Jaktip
 
     - !!models.Contestant
-        id:              3
         name:            eXceedVote Java Desktop
-        description:     By Thiwat
+        description:     Desktop client that RESTfully accesses exceedVote server, by Thiwat
 
     - !!models.Contestant
-        id:              4
         name:            Playful eXceedVote Server
-        description:     By Apiwat Kanokphol Witsarut
+        description:     eXceedVote web server and web service provider, using Digest authentication, by Apiwat Kanokphol Witsarut
 
 
 criteria:
 
     - !!models.Criterion
-        id:              1
         name:            Creativity and Originality
         type:            1
 
     - !!models.Criterion
-        id:              2
         name:            Best Implementation (Completeness, Reliability)
         type:            1
 
     - !!models.Criterion
-        id:              3
         name:            Usability/Playability
         type:            2
 
     - !!models.Criterion
-        id:              4
         name:            Overall Project Evaluation
         type:            2
 
+# DON'T modify role names or ids. It will break the application.
+# critionVote: an integer weight for this role's vote on "criterion"
+# vote items. A weight of 2 counts twice as much as a weight of 1.
 roles:
-
     - !!models.Role
         id:              1
         name:            Student
@@ -65,46 +66,13 @@ roles:
         name:            Admin
         criterionVote:   0
 
-users:
-
-    - !!models.User
-        id:              1
-        role:
-            !!models.Role
-              id: 4
-        username:        admin
-        password:        admin
-        email:           admin@exceedvote.com
-
-    - !!models.User
-        id:              2
-        role:
-            !!models.Role
-              id: 2
-        username:        mushi
-        password:        webservices
-        email:           mushi@exceedvote.com
-
-    - !!models.User
-        id:              3
-        role:
-            !!models.Role
-              id: 3
-        username:        adrian
-        password:        adrian
-        email:           adrian@exceedvote.com
-
-    - !!models.User
-        id:              4
-        role:
-            !!models.Role
-              id: 1
-        username:        akarawit
-        password:        akarawit
-        email:           akarawit@exceedvote.com
-
-    - !!models.User
+    - !!models.Role
         id:              5
+        name:            None
+        criterionVote:   0
+
+users:
+    - !!models.User
         role:
             !!models.Role
               id: 1
@@ -113,7 +81,6 @@ users:
         email:           apiwat@exceedvote.com
 
     - !!models.User
-        id:              6
         role:
             !!models.Role
               id: 1
@@ -122,7 +89,6 @@ users:
         email:           artima@exceedvote.com
 
     - !!models.User
-        id:              7
         role:
             !!models.Role
               id: 1
@@ -131,7 +97,6 @@ users:
         email:           chanon@exceedvote.com
 
     - !!models.User
-        id:              8
         role:
             !!models.Role
               id: 1
@@ -140,7 +105,6 @@ users:
         email:           jaktip@exceedvote.com
 
     - !!models.User
-        id:              9
         role:
             !!models.Role
               id: 3
@@ -149,7 +113,6 @@ users:
         email:           jens@exceedvote.com
 
     - !!models.User
-        id:              10
         role:
             !!models.Role
               id: 1
@@ -158,7 +121,6 @@ users:
         email:           kanin@exceedvote.com
 
     - !!models.User
-        id:              11
         role:
             !!models.Role
               id: 1
@@ -167,7 +129,38 @@ users:
         email:           kanokphol@exceedvote.com
 
     - !!models.User
-        id:              12
+        role:
+            !!models.Role
+              id: 4
+        username:        admin
+        password:        admin
+        email:           admin@exceedvote.com
+
+    - !!models.User
+        role:
+            !!models.Role
+              id: 2
+        username:        mushi
+        password:        webservices
+        email:           mushi@exceedvote.com
+
+    - !!models.User
+        role:
+            !!models.Role
+              id: 3
+        username:        adrian
+        password:        adrian
+        email:           adrian@exceedvote.com
+
+    - !!models.User
+        role:
+            !!models.Role
+              id: 1
+        username:        akarawit
+        password:        akarawit
+        email:           akarawit@exceedvote.com
+
+    - !!models.User
         role:
             !!models.Role
               id: 1
@@ -176,7 +169,6 @@ users:
         email:           kunat@exceedvote.com
 
     - !!models.User
-        id:              13
         role:
             !!models.Role
               id: 1
@@ -185,7 +177,6 @@ users:
         email:           marisa@exceedvote.com
 
     - !!models.User
-        id:              14
         role:
             !!models.Role
               id: 1
@@ -194,7 +185,6 @@ users:
         email:           pawis@exceedvote.com
 
     - !!models.User
-        id:              15
         role:
             !!models.Role
               id: 3
@@ -203,7 +193,6 @@ users:
         email:           simon@exceedvote.com
 
     - !!models.User
-        id:              16
         role:
             !!models.Role
               id: 1
@@ -212,7 +201,6 @@ users:
         email:           thiwat@exceedvote.com
 
     - !!models.User
-        id:              17
         role:
             !!models.Role
               id: 1
@@ -221,7 +209,6 @@ users:
         email:           witsarut@exceedvote.com
 
     - !!models.User
-        id:              18
         role:
             !!models.Role
               id: 2
@@ -229,41 +216,8 @@ users:
         password:        jim
         email:           jim@exceedvote.com
 
-ballots:
-
-    - !!models.Ballot
-        id:              1
-        contestant:
-            !!models.Contestant
-              id: 2
-        score:           10
-
-    - !!models.Ballot
-        id:              2
-        contestant:
-            !!models.Contestant
-              id: 1
-        score:           8
-
-votes:
-
-    - !!models.Vote
-        id:              1
-        user:
-            !!models.User
-              id: 1
-        criterion:
-            !!models.Criterion
-              id: 1
-        ballots:
-            - !!models.Ballot
-              id: 1
-            - !!models.Ballot
-              id: 2
-
 timers:
 
     - !!models.Timer
-        id:              1
-        start:           '2014-06-06 08:00:00 +7:00'
-        finish:          '2014-06-06 17:00:00 +7:00'
+        start:           '2014-06-11 08:00:00 +7:00'
+        finish:          '2014-06-12 18:00:00 +7:00'

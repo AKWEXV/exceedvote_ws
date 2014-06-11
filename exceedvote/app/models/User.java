@@ -14,12 +14,12 @@ import play.data.validation.*;
  */
 @Entity
 public class User extends Model {
-	
+	// Model assigns its own values to the Id field when persisted.
 	@Id
-	public Long id;
+	private Long id;
 	
 	/** The user's role. In this version a user can have only one role. */
-	@OneToOne
+	@ManyToOne
 	public Role role;
 	
 	@Constraints.Required
@@ -167,5 +167,4 @@ public class User extends Model {
 	public String toString() {
 		return username;
 	}
-
 }

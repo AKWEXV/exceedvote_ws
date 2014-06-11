@@ -13,6 +13,7 @@ import play.data.validation.*;
  * 
  * @author Kanokphol
  * revised 11-6-2014: add javadoc, revise toString to return role name
+ * revised 11-6-2014: added findByName(String name) to lookup roles
  *
  */
 @Entity
@@ -23,7 +24,7 @@ public class Role extends Model {
 	@Id
 	public Long id;
 	
-	private String name;
+	public String name;
 	
 	// the weight given to this role when computing ranks for votes?
 	private int criterionVote;
@@ -69,7 +70,15 @@ public class Role extends Model {
 	 * @return the role name
 	 */
 	public String toString() {
-		return name;
+		return this.name;
 	}
 	
+	/**
+	 * Find a role by name.
+	 * @param name the string name of role to find.
+	 * @return Role with this name, or null if no such role name.
+	 */
+	public static Role findByName(String name) {
+		return find.where().eq("name", name).findUnique();
+	}
 }

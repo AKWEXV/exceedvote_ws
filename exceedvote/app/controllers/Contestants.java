@@ -26,14 +26,14 @@ public class Contestants extends Controller {
 	}
 	
 	public static Result contestantXml(Long id) {
-		return ok(views.xml.contestant.render(Contestant.find.where().eq("id", id).findUnique()));
+		return ok(views.xml.contestant.render(Contestant.find.byId(id)));
 	}
 
 	@Security.Authenticated(Secured.class)
 	public static Result viewContestant(Long id) {
 		User user = User.findByUsername(request().username());
 		if (user.getRole().getName().equals("Admin")) {
-			return ok(views.html.contestant_management.render(Contestant.find.where().eq("id", id).findUnique(), user));
+			return ok(views.html.contestant_management.render(Contestant.find.byId(id), user));
 		}
 		else {
 			return redirect(

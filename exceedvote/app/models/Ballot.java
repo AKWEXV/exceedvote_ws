@@ -6,9 +6,9 @@ import play.db.ebean.*;
 import play.data.validation.*;
 
 /**
- * Ballot collect score for each contestant given by voter.
+ * Ballot collects scores for each contestant given by voter.
  * 
- * @author Sonny
+ * @author Kanokphol
  *
  */
 @Entity
